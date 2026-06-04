@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mirjan Scanner VS7 — MG Domain · Signal Engine</title>
+<title>Mirjan Scanner VS8 — MG Domain · Radar + Simulation</title>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -383,6 +383,14 @@ h1{font-family:var(--dp);color:var(--o);font-size:22px;letter-spacing:5px;font-w
 .sig-pl-l{display:block;font-size:7px;letter-spacing:1px;color:var(--tx2);font-family:var(--dp);}
 .sig-pl-v{display:block;font-family:var(--dp);font-size:12px;font-weight:700;margin-top:2px;}
 .sig-r-foot{display:flex;justify-content:space-between;font-size:9px;color:var(--tx2);font-family:var(--dp);}
+/* ══ VS8 LIFECYCLE — Radar + Simulation ══ */
+.lc-note{font-size:9px;color:#8a8a9e;letter-spacing:.4px;margin:0 2px 8px;line-height:1.6;font-family:var(--mono);}
+.lc-note b{color:#b0b0c4;}
+.sig-panel.radar{border-top:2px solid var(--y);}
+.sig-panel.sim{border-top:2px solid var(--g);}
+.sig-panel-title.radar{color:var(--y);}
+.sig-panel-title.sim{color:var(--g);}
+.lc-lead{font-size:9px;color:#7a9a7a;font-family:var(--dp);letter-spacing:1px;margin:-6px 2px 10px;text-align:right;}
 
 </style>
 </head>
@@ -428,7 +436,7 @@ h1{font-family:var(--dp);color:var(--o);font-size:22px;letter-spacing:5px;font-w
             <h1>Mirjan Scanner</h1>
             <span style="font-family:var(--dp);font-size:20px;font-weight:900;letter-spacing:3px;background:linear-gradient(135deg,#ffd700,#ff8c00,#fcd535);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 8px rgba(255,215,0,.4))">V &thinsp; S1</span>
         </div>
-        <div class="vtag">VS7 · SIGNAL ENGINE · GAP+IGNITION + FUTURES OVERLAY · 6-TIER SLOTS · ASK/BID SQUEEZE CALC · MG DOMAIN</div>
+        <div class="vtag">VS8 · RADAR + SIMULATION · LIFECYCLE STATE MACHINE · WALL MONITOR + INVALIDATION · MG DOMAIN</div>
         <div class="srow" style="margin-top:8px;">
             <div class="cbadge"><span class="dot dot-x" id="d-all"></span><span id="l-all" style="color:#7a7a8e">ALL-TICKER</span></div>
             <div class="cbadge"><span class="dot dot-x" id="d-heavy"></span><span id="l-heavy" style="color:#7a7a8e">HEAVY WS</span></div>
@@ -634,15 +642,28 @@ h1{font-family:var(--dp);color:var(--o);font-size:22px;letter-spacing:5px;font-w
         <div class="tcl" style="color:#5a8ad0;">729× LEGEND</div>
     </div>
     
-<!-- VS7 SIGNAL ENGINE PANEL -->
-<div class="sig-panel" id="sig-panel">
+<!-- VS8 RADAR PANEL -->
+<div class="sig-panel radar" id="radar-panel">
     <div class="sig-panel-head">
-        <span class="sig-panel-title">🎯 SIGNAL ENGINE</span>
-        <span class="sig-panel-sub">GAP + IGNITION + STOP · strict · persisted</span>
-        <button class="sig-clear" onclick="clearSignals()">CLEAR LOG</button>
+        <span class="sig-panel-title radar">🛰 RADAR — DETECTION</span>
+        <span class="sig-panel-sub">thin-wall + ignition spotted EARLY · no P&amp;L counted here</span>
+        <button class="sig-clear" onclick="clearLifecycle()">CLEAR ALL</button>
     </div>
-    <div class="sig-scoreboard" id="sig-scoreboard"></div>
-    <div id="sig-list"></div>
+    <div class="lc-note">Measures detection only. A coin lands here the instant a thin-wall runway + ignition is spotted, <b>before</b> any entry. It then resolves to FILLED (→ simulation), MISS (setup failed / timed out), or OUT-OF-STRATEGY (wall &amp; gap dissolved). A MISS is <b>not</b> a loss.</div>
+    <div class="sig-scoreboard" id="radar-sb"></div>
+    <div class="lc-lead" id="radar-lead"></div>
+    <div id="radar-list"></div>
+</div>
+
+<!-- VS8 SIMULATION PANEL -->
+<div class="sig-panel sim" id="sim-panel">
+    <div class="sig-panel-head">
+        <span class="sig-panel-title sim">🎯 SIMULATION — EXECUTION</span>
+        <span class="sig-panel-sub">confirmed fills only · win-rate &amp; expectancy on REALIZED closes</span>
+    </div>
+    <div class="lc-note">The honest 60-day scoreboard. A radar candidate only arrives here after ignition <b>persists</b> (a real entry is confirmed). Win rate and expectancy are computed on the realized close price — phantom ticks and never-filled setups can never enter this board.</div>
+    <div class="sig-scoreboard" id="sim-sb"></div>
+    <div id="sim-list"></div>
 </div>
 
     <div id="vs5-qbar" style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;padding:7px 10px;background:rgba(0,170,255,.03);border:1px solid rgba(0,170,255,.1);border-radius:6px;"></div>
@@ -2116,207 +2137,288 @@ function makeWSReturn(urlFn,onMsg,sid){
    NEVER says "buy" — says "entry condition met, here is the plan".
    ════════════════════════════════════════════════════════════════════ */
 
-const SIG_KEY='mirjan_vs7_signals';
-let signals=[];                 /* all logged signals */
-const lastPrice={};             /* prev tick price for up/down detection */
-const sigCooldown={};           /* coin -> last signal ts, prevent spam */
-const SIG_COOLDOWN_MS=180000;   /* 3 min between signals per coin */
-const IGNITION_VOL=3;           /* strict: 3x baseline volume */
-const IGNITION_BA=1.5;          /* buyers present */
-const STOP_MAX_PCT=12;          /* stop must be within 12% below entry */
+/* ════════════════════════════════════════════════════════════════════
+   VS8 SIGNAL LIFECYCLE — RADAR + SIMULATION  (replaces VS7 engine)
+   States: WATCH → FILLED → TARGET / STOP  |  MISS  |  INVALIDATED
+   Honest model: a DETECTED setup is NOT a position. It rides the RADAR
+   until ignition PERSISTS (real fill), evaporates (MISS), or the
+   thin-wall/gap structure breaks (INVALIDATED). Only confirmed fills
+   enter the SIMULATION board, scored on REALIZED close prices.
+   Every event is timestamped to the second (UTC). Lead time tracked.
+   Fresh storage key — the legacy VS7 phantom record is left untouched
+   on disk but never loaded here, so the 60-day run starts clean.
+   ════════════════════════════════════════════════════════════════════ */
+const V8_KEY='mirjan_vs8_lifecycle';
+let v8=[];
+const lastPrice={};
+const sigCooldown={};
 
-function loadSignals(){
-    try{const raw=localStorage.getItem(SIG_KEY);if(raw)signals=JSON.parse(raw)||[];}catch(e){signals=[];}
-}
-function saveSignals(){
-    try{localStorage.setItem(SIG_KEY,JSON.stringify(signals.slice(-200)));}catch(e){}
+const CONFIRM_TICKS    = 2;       /* ignition must persist N cycles (~6s) to confirm a real fill */
+const WATCH_TIMEOUT_MS = 300000;  /* 5 min on radar w/o fill → MISS (expired) */
+const PREFILL_FAIL_PCT = 2;       /* price drops >2% below detect before fill → MISS (breakout failed) */
+const SIG_COOLDOWN_MS  = 180000;  /* 3 min between candidates per coin */
+const IGNITION_VOL     = 3;       /* 3× baseline volume */
+const IGNITION_BA      = 1.5;     /* buyers present */
+const STOP_MAX_PCT     = 12;      /* stop within 12% below entry */
+
+function v8load(){ try{const r=localStorage.getItem(V8_KEY); if(r) v8=JSON.parse(r)||[];}catch(e){v8=[];} }
+function v8save(){ try{localStorage.setItem(V8_KEY, JSON.stringify(v8.slice(-300)));}catch(e){} }
+
+function logEv(sig,ev,note){
+    const t=Date.now();
+    sig.events=sig.events||[];
+    sig.events.push({t, utc:fUTC(new Date(t)), ev, note:note||''});
 }
 
-/* ── IGNITION DETECTOR ── */
+/* ── IGNITION (same conditions as VS7) ── */
 function checkIgnition(coin){
-    const mult=liveMult[coin]||0;
-    const ba=baRatio[coin]||1;
-    const px=livePrice[coin]||0;
-    const prev=lastPrice[coin]||px;
-    const rising=px>=prev;
-    lastPrice[coin]=px;
-    return {
-        ok: mult>=IGNITION_VOL && ba>=IGNITION_BA && rising,
-        mult, ba, rising, px
-    };
+    const mult=liveMult[coin]||0, ba=baRatio[coin]||1, px=livePrice[coin]||0;
+    const prev=lastPrice[coin]||px, rising=px>=prev; lastPrice[coin]=px;
+    return {ok: mult>=IGNITION_VOL && ba>=IGNITION_BA && rising, mult, ba, rising, px};
 }
 
-/* ── ENTRY TRIGGER — evaluated per funnel coin each cycle ── */
+/* ── DETECTION → push to RADAR as WATCH (never an instant position) ── */
 function evaluateEntry(coin){
-    /* already have an OPEN signal on this coin? skip */
-    if(signals.some(s=>s.coin===coin&&s.status==='OPEN'))return;
-    /* cooldown */
+    if(v8.some(s=>s.coin===coin&&(s.state==='WATCH'||s.state==='FILLED')))return;
     const now=Date.now();
     if(sigCooldown[coin]&&now-sigCooldown[coin]<SIG_COOLDOWN_MS)return;
 
-    const ign=checkIgnition(coin);
-    if(!ign.ok)return;                       /* no ignition = no signal */
+    const ign=checkIgnition(coin); if(!ign.ok)return;
+    const gz=calcGapZones(coin);   if(!gz||!gz.best||gz.best.gain<15)return;
 
-    const gz=calcGapZones(coin);
-    if(!gz||!gz.best||gz.best.gain<15)return; /* no gap target = no signal */
-
-    /* STOP: nearest strong support bid below entry */
     const px=gz.px;
     const bids=[...(depBids[coin]||[])].sort((a,b)=>b[0]-a[0]);
-    let stop=0,stopReason='';
-    /* strongest bid wall below price = support */
-    let maxU=0;
-    bids.forEach(b=>{if(b[0]<px){const u=b[0]*b[1];if(u>maxU){maxU=u;stop=b[0];}}});
-    if(stop<=0)stop=px*0.94;                 /* fallback 6% */
-    const riskPct=((px-stop)/px*100);
-    if(riskPct>STOP_MAX_PCT)return;           /* risk too wide, skip */
-    if(riskPct<=0)return;
+    let stop=0,maxU=0;
+    bids.forEach(b=>{if(b[0]<px){const u=b[0]*b[1]; if(u>maxU){maxU=u;stop=b[0];}}});
+    if(stop<=0)stop=px*0.94;
+    const riskPct=(px-stop)/px*100;
+    if(riskPct>STOP_MAX_PCT||riskPct<=0)return;
+    const gainPct=gz.best.gain, target=gz.best.px, rr=gainPct/riskPct;
+    if(rr<1.5)return;
 
-    const target=gz.best.px;
-    const gainPct=gz.best.gain;
-    const rr=(gainPct/riskPct);               /* reward:risk ratio */
-    if(rr<1.5)return;                         /* need at least 1.5:1 */
-
-    /* FIRE — log immutable signal */
     const sig={
-        id:'sg_'+now+'_'+coin,
-        ts:now,
-        tsUTC:fUTC(new Date()),
-        coin,
-        entry:px,
-        target,
-        stop,
-        gainPct:+gainPct.toFixed(2),
-        riskPct:+riskPct.toFixed(2),
-        rr:+rr.toFixed(2),
-        trigVol:+ign.mult.toFixed(1),
-        trigBA:+ign.ba.toFixed(2),
-        cls:gz.best.cl.cls,
-        hasFut:gz.hasFut,
-        status:'OPEN',
-        result:null,
-        closedTs:null,
-        closedPrice:null
+        id:'v8_'+now+'_'+coin, coin,
+        state:'WATCH',
+        detTs:now, detUTC:fUTC(new Date(now)),
+        detEntry:px, entry:null, filledTs:null, leadMs:null,
+        target, stop,
+        gainPct:+gainPct.toFixed(2), riskPct:+riskPct.toFixed(2), rr:+rr.toFixed(2),
+        trigVol:+ign.mult.toFixed(1), trigBA:+ign.ba.toFixed(2),
+        cls:gz.best.cl.cls, hasFut:gz.hasFut,
+        confirms:0, result:null, closedTs:null, closedPrice:null, closedPct:null,
+        events:[]
     };
-    signals.push(sig);
-    sigCooldown[coin]=now;
-    saveSignals();
-    onNewSignal(sig);
+    logEv(sig,'DETECTED',`entry\u2248$${fp(px)} \u00b7 vol ${sig.trigVol}\u00d7 \u00b7 B:A ${sig.trigBA} \u00b7 ${sig.cls}`);
+    v8.push(sig); sigCooldown[coin]=now; v8save();
+    logL(`\U0001F6F0 <span style="color:var(--y);font-weight:bold">RADAR</span> ${coin.toUpperCase()} thin-wall @ $${fp(px)} \u2192 +${sig.gainPct}% (watching)`);
+    try{if(navigator.vibrate)navigator.vibrate([30]);}catch(e){}
 }
 
-/* ── OUTCOME TRACKER — checks every OPEN signal against live price ── */
-function trackOutcomes(){
+/* ── RADAR MONITOR — re-validate every WATCH each cycle ── */
+function monitorWatch(){
     let changed=false;
-    signals.forEach(s=>{
-        if(s.status!=='OPEN')return;
-        const px=livePrice[s.coin];
-        if(!px||px<=0)return;
+    v8.forEach(s=>{
+        if(s.state!=='WATCH')return;
+        const now=Date.now();
+        const px=livePrice[s.coin]||0;
+
+        if(now-s.detTs>WATCH_TIMEOUT_MS){
+            s.state='MISS'; s.result='TIMEOUT'; s.closedTs=now;
+            logEv(s,'MISS','no fill within window \u2014 candidate expired'); changed=true; return;
+        }
+        if(px>0 && px < s.detEntry*(1-PREFILL_FAIL_PCT/100)){
+            const drop=((px-s.detEntry)/s.detEntry*100).toFixed(1);
+            s.state='MISS'; s.result='FAILED'; s.closedTs=now; s.closedPrice=px;
+            logEv(s,'MISS',`price fell ${drop}% before fill \u2014 breakout failed`); changed=true; return;
+        }
+        const gz=calcGapZones(s.coin);
+        if(!gz||!gz.best||gz.best.gain<15){
+            s.state='INVALIDATED'; s.result='WALL_GONE'; s.closedTs=now; s.closedPrice=px;
+            logEv(s,'INVALIDATED','thin-wall / gap target dissolved'); changed=true; return;
+        }
+        const ign=checkIgnition(s.coin);
+        if(ign.ok){
+            s.confirms++;
+            if(s.confirms>=CONFIRM_TICKS){
+                s.state='FILLED'; s.entry=px; s.filledTs=now; s.leadMs=now-s.detTs;
+                logEv(s,'FILLED',`fill $${fp(px)} \u00b7 lead ${fEl(s.leadMs)}`);
+                logL(`\U0001F3AF <span style="color:var(--g);font-weight:bold">FILLED</span> ${s.coin.toUpperCase()} @ $${fp(px)} \u2192 +${s.gainPct}% (R:R ${s.rr}:1)`);
+                try{if(navigator.vibrate)navigator.vibrate([40,30,40]);}catch(e){}
+                changed=true;
+            }
+        } else { s.confirms=0; }
+    });
+    if(changed)v8save();
+}
+
+/* ── SIMULATION TRACKER — only FILLED positions, realized P&L ── */
+function trackFilled(){
+    let changed=false;
+    v8.forEach(s=>{
+        if(s.state!=='FILLED')return;
+        const px=livePrice[s.coin]; if(!px||px<=0)return;
         if(px>=s.target){
-            s.status='CLOSED';s.result='WIN';s.closedTs=Date.now();s.closedPrice=px;changed=true;
-            onSignalClosed(s);
-        }else if(px<=s.stop){
-            s.status='CLOSED';s.result='LOSS';s.closedTs=Date.now();s.closedPrice=px;changed=true;
-            onSignalClosed(s);
+            s.state='TARGET'; s.result='WIN'; s.closedTs=Date.now(); s.closedPrice=px;
+            s.closedPct=+(((px-s.entry)/s.entry)*100).toFixed(2);
+            logEv(s,'TARGET',`+${s.closedPct}% realized`); changed=true;
+            logL(`\u2705 <span style="color:var(--g)">WIN</span> ${s.coin.toUpperCase()} +${s.closedPct}% @ $${fp(px)}`);
+        } else if(px<=s.stop){
+            s.state='STOP'; s.result='LOSS'; s.closedTs=Date.now(); s.closedPrice=px;
+            s.closedPct=+(((px-s.entry)/s.entry)*100).toFixed(2);
+            logEv(s,'STOP',`${s.closedPct}% realized`); changed=true;
+            logL(`\u274C <span style="color:var(--r)">LOSS</span> ${s.coin.toUpperCase()} ${s.closedPct}% @ $${fp(px)}`);
         }
     });
-    if(changed)saveSignals();
+    if(changed)v8save();
 }
 
-/* ── SCOREBOARD ── */
-function computeScore(){
-    const closed=signals.filter(s=>s.status==='CLOSED');
-    const wins=closed.filter(s=>s.result==='WIN');
-    const losses=closed.filter(s=>s.result==='LOSS');
-    const open=signals.filter(s=>s.status==='OPEN');
-    const winRate=closed.length>0?(wins.length/closed.length*100):0;
-    const avgWin=wins.length>0?wins.reduce((a,s)=>a+s.gainPct,0)/wins.length:0;
-    const avgLoss=losses.length>0?losses.reduce((a,s)=>a+s.riskPct,0)/losses.length:0;
-    /* expectancy per trade = winRate*avgWin - lossRate*avgLoss */
-    const expectancy=closed.length>0?((wins.length*avgWin-losses.length*avgLoss)/closed.length):0;
-    return {total:signals.length,open:open.length,closed:closed.length,
-        wins:wins.length,losses:losses.length,winRate,avgWin,avgLoss,expectancy};
+/* ── SCOREBOARDS ── */
+function radarScore(){
+    const det=v8.length;
+    const watching=v8.filter(s=>s.state==='WATCH').length;
+    const filled=v8.filter(s=>s.state==='FILLED'||s.state==='TARGET'||s.state==='STOP').length;
+    const miss=v8.filter(s=>s.state==='MISS').length;
+    const invalid=v8.filter(s=>s.state==='INVALIDATED').length;
+    const resolved=filled+miss+invalid;
+    const fillRate=resolved>0?(filled/resolved*100):0;
+    const leads=v8.filter(s=>s.leadMs!=null).map(s=>s.leadMs);
+    const avgLead=leads.length?leads.reduce((a,b)=>a+b,0)/leads.length:0;
+    return {det,watching,filled,miss,invalid,fillRate,avgLead,leadN:leads.length};
+}
+function simScore(){
+    const positions=v8.filter(s=>s.state==='FILLED'||s.state==='TARGET'||s.state==='STOP').length;
+    const open=v8.filter(s=>s.state==='FILLED').length;
+    const wins=v8.filter(s=>s.state==='TARGET');
+    const losses=v8.filter(s=>s.state==='STOP');
+    const closed=wins.length+losses.length;
+    const winRate=closed>0?(wins.length/closed*100):0;
+    const aw=wins.length?wins.reduce((a,s)=>a+(s.closedPct||0),0)/wins.length:0;
+    const al=losses.length?losses.reduce((a,s)=>a+Math.abs(s.closedPct||0),0)/losses.length:0;
+    const expectancy=closed>0?((wins.length*aw-losses.length*al)/closed):0;
+    return {positions,open,wins:wins.length,losses:losses.length,winRate,expectancy};
 }
 
-/* ── RENDER SIGNAL PANEL ── */
-function renderSignals(){
-    const sc=computeScore();
-    /* scoreboard */
-    const sb=document.getElementById('sig-scoreboard');
+/* ── STATE BADGE ── */
+function stBadge(state){
+    switch(state){
+        case 'WATCH':       return ['\U0001F504 MONITORING','var(--y)'];
+        case 'FILLED':      return ['\U0001F3AF FILLED','var(--b)'];
+        case 'TARGET':      return ['\u2705 TARGET HIT','var(--g)'];
+        case 'STOP':        return ['\u274C LOSS','var(--r)'];
+        case 'MISS':        return ['\u26A0 MISS','#999'];
+        case 'INVALIDATED': return ['\U0001F6AB OUT OF STRATEGY','#b76bff'];
+        default:            return [state,'var(--tx)'];
+    }
+}
+
+/* ── CARD ── */
+function lcCard(s){
+    const [txt,col]=stBadge(s.state);
+    const live=livePrice[s.coin]||s.entry||s.detEntry;
+    let pctNow;
+    if(s.state==='WATCH')       pctNow=((live-s.detEntry)/s.detEntry*100);
+    else if(s.state==='FILLED') pctNow=((live-s.entry)/s.entry*100);
+    else                        pctNow=(s.closedPct!=null?s.closedPct:0);
+    const entryLbl=s.entry?('$'+fp(s.entry)):('\u2248$'+fp(s.detEntry));
+    const futTag=s.hasFut?'<span class="sig-tag-fut">FUT</span>':'';
+    const tstamp=s.state==='WATCH'?s.detUTC:(s.filledTs?fUTC(new Date(s.filledTs)):(s.closedTs?fUTC(new Date(s.closedTs)):s.detUTC));
+    let footR;
+    if(s.state==='WATCH'){
+        footR=`<span style="color:var(--y)">watching ${fEl(Date.now()-s.detTs)} \u00b7 confirm ${s.confirms}/${CONFIRM_TICKS}</span>`;
+    } else if(s.state==='FILLED'){
+        footR=`<span style="color:${pctNow>=0?'var(--g)':'var(--r)'}">live ${pctNow>=0?'+':''}${pctNow.toFixed(1)}% \u00b7 lead ${fEl(s.leadMs||0)}</span>`;
+    } else if(s.state==='MISS'||s.state==='INVALIDATED'){
+        const note=(s.events&&s.events.length)?s.events[s.events.length-1].note:'';
+        footR=`<span style="color:${col}">${note}</span>`;
+    } else {
+        footR=`<span style="color:${pctNow>=0?'var(--g)':'var(--r)'}">closed ${pctNow>=0?'+':''}${pctNow.toFixed(1)}% realized</span>`;
+    }
+    return `<div class="sig-card-row" style="border-left:3px solid ${col}">
+        <div class="sig-r-head">
+            <span class="sig-r-coin">${s.coin.toUpperCase()}</span>
+            <span class="sig-tag-cls">${s.cls}</span>${futTag}
+            <span class="sig-r-status" style="color:${col}">${txt}</span>
+            <span class="sig-r-time">${tstamp}z</span>
+        </div>
+        <div class="sig-r-plan">
+            <div class="sig-pl"><span class="sig-pl-l">${s.entry?'FILL':'ENTRY'}</span><span class="sig-pl-v">${entryLbl}</span></div>
+            <div class="sig-pl"><span class="sig-pl-l" style="color:var(--g)">TARGET</span><span class="sig-pl-v" style="color:var(--g)">$${fp(s.target)} (+${s.gainPct}%)</span></div>
+            <div class="sig-pl"><span class="sig-pl-l" style="color:var(--r)">STOP</span><span class="sig-pl-v" style="color:var(--r)">$${fp(s.stop)} (-${s.riskPct}%)</span></div>
+            <div class="sig-pl"><span class="sig-pl-l">R:R</span><span class="sig-pl-v" style="color:${s.rr>=2?'var(--g)':'var(--y)'}">${s.rr}:1</span></div>
+        </div>
+        <div class="sig-r-foot">
+            <span>trigger: vol ${s.trigVol}\u00d7 \u00b7 B:A ${s.trigBA}</span>
+            ${footR}
+        </div>
+    </div>`;
+}
+
+/* ── RENDER BOTH BOARDS ── */
+function renderLifecycle(){
+    const rs=radarScore(), ss=simScore();
+
+    const rb=document.getElementById('radar-sb');
+    if(rb){
+        rb.innerHTML=
+        `<div class="sb-cell"><div class="sb-v" style="color:var(--tx)">${rs.det}</div><div class="sb-l">DETECTED</div></div>
+         <div class="sb-cell"><div class="sb-v" style="color:var(--y)">${rs.watching}</div><div class="sb-l">WATCHING</div></div>
+         <div class="sb-cell"><div class="sb-v" style="color:var(--b)">${rs.filled}</div><div class="sb-l">FILLED</div></div>
+         <div class="sb-cell"><div class="sb-v" style="color:#999">${rs.miss}</div><div class="sb-l">MISS</div></div>
+         <div class="sb-cell"><div class="sb-v" style="color:#b76bff">${rs.invalid}</div><div class="sb-l">INVALID</div></div>
+         <div class="sb-cell"><div class="sb-v" style="color:var(--ig)">${rs.fillRate.toFixed(0)}%</div><div class="sb-l">FILL RATE</div></div>`;
+    }
+    const rlead=document.getElementById('radar-lead');
+    if(rlead) rlead.textContent = rs.leadN>0 ? ('avg lead detect\u2192fill: '+fEl(rs.avgLead)+'  ('+rs.leadN+' fills)') : '';
+
+    const rl=document.getElementById('radar-list');
+    if(rl){
+        const cand=v8.filter(s=>s.state==='WATCH'||s.state==='MISS'||s.state==='INVALIDATED')
+                     .sort((a,b)=>(b.closedTs||b.detTs)-(a.closedTs||a.detTs)).slice(0,30);
+        rl.innerHTML=cand.length?cand.map(lcCard).join('')
+            :'<div class="sig-empty">Radar clear. A coin appears here the instant a thin-wall runway + ignition is spotted \u2014 BEFORE any fill. It then resolves to FILLED (\u2192 simulation), MISS, or OUT-OF-STRATEGY. No P&amp;L is counted here.</div>';
+    }
+
+    const sb=document.getElementById('sim-sb');
     if(sb){
-        const expCol=sc.expectancy>0?'var(--g)':sc.expectancy<0?'var(--r)':'var(--tx2)';
-        const wrCol=sc.winRate>=55?'var(--g)':sc.winRate>=45?'var(--y)':'var(--r)';
-        sb.innerHTML=`
-            <div class="sb-cell"><div class="sb-v" style="color:var(--tx)">${sc.total}</div><div class="sb-l">SIGNALS</div></div>
-            <div class="sb-cell"><div class="sb-v" style="color:var(--y)">${sc.open}</div><div class="sb-l">OPEN</div></div>
-            <div class="sb-cell"><div class="sb-v" style="color:var(--g)">${sc.wins}</div><div class="sb-l">WINS</div></div>
-            <div class="sb-cell"><div class="sb-v" style="color:var(--r)">${sc.losses}</div><div class="sb-l">LOSSES</div></div>
-            <div class="sb-cell"><div class="sb-v" style="color:${wrCol}">${sc.winRate.toFixed(0)}%</div><div class="sb-l">WIN RATE</div></div>
-            <div class="sb-cell"><div class="sb-v" style="color:${expCol}">${sc.expectancy>=0?'+':''}${sc.expectancy.toFixed(1)}%</div><div class="sb-l">EXPECTANCY</div></div>`;
+        const expCol=ss.expectancy>0?'var(--g)':ss.expectancy<0?'var(--r)':'var(--tx2)';
+        const wrCol=ss.winRate>=55?'var(--g)':ss.winRate>=45?'var(--y)':'var(--r)';
+        sb.innerHTML=
+        `<div class="sb-cell"><div class="sb-v" style="color:var(--tx)">${ss.positions}</div><div class="sb-l">POSITIONS</div></div>
+         <div class="sb-cell"><div class="sb-v" style="color:var(--b)">${ss.open}</div><div class="sb-l">OPEN</div></div>
+         <div class="sb-cell"><div class="sb-v" style="color:var(--g)">${ss.wins}</div><div class="sb-l">WINS</div></div>
+         <div class="sb-cell"><div class="sb-v" style="color:var(--r)">${ss.losses}</div><div class="sb-l">LOSSES</div></div>
+         <div class="sb-cell"><div class="sb-v" style="color:${wrCol}">${ss.winRate.toFixed(0)}%</div><div class="sb-l">WIN RATE</div></div>
+         <div class="sb-cell"><div class="sb-v" style="color:${expCol}">${ss.expectancy>=0?'+':''}${ss.expectancy.toFixed(1)}%</div><div class="sb-l">EXPECTANCY</div></div>`;
     }
-    /* signal list — newest first */
-    const list=document.getElementById('sig-list');
-    if(!list)return;
-    if(signals.length===0){
-        list.innerHTML='<div class="sig-empty">No signals yet. The engine fires only when GAP + IGNITION + valid STOP all align. Strict mode — expect few, high-quality signals. Leave it running.</div>';
-        return;
+    const sl=document.getElementById('sim-list');
+    if(sl){
+        const pos=v8.filter(s=>s.state==='FILLED'||s.state==='TARGET'||s.state==='STOP')
+                    .sort((a,b)=>(b.filledTs||b.detTs)-(a.filledTs||a.detTs)).slice(0,30);
+        sl.innerHTML=pos.length?pos.map(lcCard).join('')
+            :'<div class="sig-empty">No filled positions yet. A radar candidate only lands here after ignition PERSISTS (real entry confirmed). Win rate &amp; expectancy are computed on REALIZED closes \u2014 the honest scoreboard for the 60-day run.</div>';
     }
-    const sorted=[...signals].sort((a,b)=>b.ts-a.ts).slice(0,40);
-    list.innerHTML=sorted.map(s=>{
-        const stCol=s.status==='OPEN'?'var(--y)':s.result==='WIN'?'var(--g)':'var(--r)';
-        const stTxt=s.status==='OPEN'?'⏳ OPEN':s.result==='WIN'?'✅ WIN':'❌ LOSS';
-        const live=livePrice[s.coin]||s.entry;
-        const livePct=s.status==='OPEN'?((live-s.entry)/s.entry*100):((s.closedPrice-s.entry)/s.entry*100);
-        const futTag=s.hasFut?'<span class="sig-tag-fut">FUT</span>':'';
-        return `<div class="sig-card-row" style="border-left:3px solid ${stCol}">
-            <div class="sig-r-head">
-                <span class="sig-r-coin">${s.coin.toUpperCase()}</span>
-                <span class="sig-tag-cls">${s.cls}</span>${futTag}
-                <span class="sig-r-status" style="color:${stCol}">${stTxt}</span>
-                <span class="sig-r-time">${s.tsUTC}z</span>
-            </div>
-            <div class="sig-r-plan">
-                <div class="sig-pl"><span class="sig-pl-l">ENTRY</span><span class="sig-pl-v">$${fp(s.entry)}</span></div>
-                <div class="sig-pl"><span class="sig-pl-l" style="color:var(--g)">TARGET</span><span class="sig-pl-v" style="color:var(--g)">$${fp(s.target)} (+${s.gainPct}%)</span></div>
-                <div class="sig-pl"><span class="sig-pl-l" style="color:var(--r)">STOP</span><span class="sig-pl-v" style="color:var(--r)">$${fp(s.stop)} (-${s.riskPct}%)</span></div>
-                <div class="sig-pl"><span class="sig-pl-l">R:R</span><span class="sig-pl-v" style="color:${s.rr>=2?'var(--g)':'var(--y)'}">${s.rr}:1</span></div>
-            </div>
-            <div class="sig-r-foot">
-                <span>trigger: vol ${s.trigVol}× · B:A ${s.trigBA}</span>
-                <span style="color:${livePct>=0?'var(--g)':'var(--r)'}">${s.status==='OPEN'?'now':'closed'}: ${livePct>=0?'+':''}${livePct.toFixed(1)}%</span>
-            </div>
-        </div>`;
-    }).join('');
 }
 
-function onNewSignal(sig){
-    logL(`🎯 <span style="color:var(--g);font-weight:bold">SIGNAL</span> ${sig.coin.toUpperCase()} entry $${fp(sig.entry)} → target +${sig.gainPct}% (R:R ${sig.rr}:1)`);
-    /* sound + vibrate if available */
-    try{if(window.navigator&&navigator.vibrate)navigator.vibrate([40,30,40]);}catch(e){}
-    renderSignals();
+function clearLifecycle(){
+    if(!confirm('Clear ALL radar + simulation records? This cannot be undone.'))return;
+    v8=[]; v8save(); renderLifecycle();
 }
-function onSignalClosed(sig){
-    const r=sig.result==='WIN'?'✅ WIN':'❌ LOSS';
-    logL(`${r} ${sig.coin.toUpperCase()} closed at $${fp(sig.closedPrice)}`);
-    renderSignals();
-}
-
-function clearSignals(){
-    if(!confirm('Clear ALL logged signals and the track record? This cannot be undone.'))return;
-    signals=[];saveSignals();renderSignals();
-}
+const clearSignals=clearLifecycle; /* legacy alias */
 
 /* ── ENGINE LOOP ── */
 function runSignalEngine(){
     const pool=getAlphaPool();
     pool.forEach(coin=>{ try{evaluateEntry(coin);}catch(e){} });
-    trackOutcomes();
-    renderSignals();
+    monitorWatch();
+    trackFilled();
+    renderLifecycle();
 }
 
-/* boot signal engine */
-loadSignals();
+/* boot lifecycle */
+v8load();
 setInterval(runSignalEngine,3000);
-setTimeout(renderSignals,1000);
+setTimeout(renderLifecycle,1000);
+
 
 /* BOOT */
 startAllTicker();startHeavyWS();startAlphaWS();startBNBLiq();startOKXLiq();startMTFEngine();
