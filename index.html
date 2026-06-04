@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mirjan Scanner VS8 — MG Domain · Radar + Simulation</title>
+<title>Mirjan Scanner VS8.1 — MG Domain · Radar + Simulation + Live Scan</title>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -391,6 +391,18 @@ h1{font-family:var(--dp);color:var(--o);font-size:22px;letter-spacing:5px;font-w
 .sig-panel-title.radar{color:var(--y);}
 .sig-panel-title.sim{color:var(--g);}
 .lc-lead{font-size:9px;color:#7a9a7a;font-family:var(--dp);letter-spacing:1px;margin:-6px 2px 10px;text-align:right;}
+/* ══ VS8.1 LIVE SCAN DIAGNOSTIC ══ */
+.scan-diag{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#06060c;border:1px solid var(--bd);border-radius:8px;padding:8px 10px;margin-bottom:12px;font-family:var(--mono);font-size:10px;}
+.scan-live{display:flex;align-items:center;gap:6px;color:var(--ig);font-family:var(--dp);letter-spacing:1px;white-space:nowrap;font-weight:700;}
+.scan-live .dot{width:7px;height:7px;border-radius:50%;background:var(--ig);box-shadow:0 0 6px var(--ig);animation:blink 1.4s infinite;}
+.scan-chips{display:flex;gap:6px;flex-wrap:wrap;flex:1;}
+.scan-chip{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:6px;padding:3px 9px;white-space:nowrap;}
+.scan-chip .cn{font-family:var(--dp);font-weight:700;color:var(--tx);letter-spacing:.5px;}
+.scan-bar{width:44px;height:5px;border-radius:3px;background:#1c1c26;overflow:hidden;}
+.scan-bar i{display:block;height:100%;border-radius:3px;transition:width .4s ease;}
+.scan-pct{font-family:var(--dp);font-weight:700;}
+.scan-blk{color:#8a8a9e;}
+.scan-empty{color:#8a8a9e;}
 
 </style>
 </head>
@@ -436,7 +448,7 @@ h1{font-family:var(--dp);color:var(--o);font-size:22px;letter-spacing:5px;font-w
             <h1>Mirjan Scanner</h1>
             <span style="font-family:var(--dp);font-size:20px;font-weight:900;letter-spacing:3px;background:linear-gradient(135deg,#ffd700,#ff8c00,#fcd535);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 8px rgba(255,215,0,.4))">V &thinsp; S1</span>
         </div>
-        <div class="vtag">VS8 · RADAR + SIMULATION · LIFECYCLE STATE MACHINE · WALL MONITOR + INVALIDATION · MG DOMAIN</div>
+        <div class="vtag">VS8.1 · RADAR + SIMULATION · LIVE SCAN % · LIFECYCLE STATE MACHINE · WALL MONITOR + INVALIDATION · MG DOMAIN</div>
         <div class="srow" style="margin-top:8px;">
             <div class="cbadge"><span class="dot dot-x" id="d-all"></span><span id="l-all" style="color:#7a7a8e">ALL-TICKER</span></div>
             <div class="cbadge"><span class="dot dot-x" id="d-heavy"></span><span id="l-heavy" style="color:#7a7a8e">HEAVY WS</span></div>
@@ -650,6 +662,7 @@ h1{font-family:var(--dp);color:var(--o);font-size:22px;letter-spacing:5px;font-w
         <button class="sig-clear" onclick="clearLifecycle()">CLEAR ALL</button>
     </div>
     <div class="lc-note">Measures detection only. A coin lands here the instant a thin-wall runway + ignition is spotted, <b>before</b> any entry. It then resolves to FILLED (→ simulation), MISS (setup failed / timed out), or OUT-OF-STRATEGY (wall &amp; gap dissolved). A MISS is <b>not</b> a loss.</div>
+    <div class="scan-diag" id="radar-scan"></div>
     <div class="sig-scoreboard" id="radar-sb"></div>
     <div class="lc-lead" id="radar-lead"></div>
     <div id="radar-list"></div>
@@ -2148,18 +2161,31 @@ function makeWSReturn(urlFn,onMsg,sid){
    Fresh storage key — the legacy VS7 phantom record is left untouched
    on disk but never loaded here, so the 60-day run starts clean.
    ════════════════════════════════════════════════════════════════════ */
+/* ════════════════════════════════════════════════════════════════════
+   VS8.1 SIGNAL LIFECYCLE — RADAR + SIMULATION + LIVE SCAN DIAGNOSTIC
+   States: WATCH → FILLED → TARGET / STOP  |  MISS  |  INVALIDATED
+   A detected setup is NOT a position. It rides the RADAR until ignition
+   PERSISTS (fill), evaporates (MISS), or the thin-wall/gap breaks
+   (INVALIDATED). Only confirmed fills enter SIMULATION, scored on
+   REALIZED closes. Every event timestamped to the second (UTC).
+   NEW: one scan pass per cycle computes a readiness % per coin across
+   all 5 gates and shows the closest nominees above the radar, so an
+   empty radar is provably "alive but nothing qualifies", not broken.
+   ════════════════════════════════════════════════════════════════════ */
 const V8_KEY='mirjan_vs8_lifecycle';
 let v8=[];
 const lastPrice={};
 const sigCooldown={};
 
-const CONFIRM_TICKS    = 2;       /* ignition must persist N cycles (~6s) to confirm a real fill */
-const WATCH_TIMEOUT_MS = 300000;  /* 5 min on radar w/o fill → MISS (expired) */
-const PREFILL_FAIL_PCT = 2;       /* price drops >2% below detect before fill → MISS (breakout failed) */
+const CONFIRM_TICKS    = 2;       /* ignition must persist N cycles (~6s) to confirm a fill */
+const WATCH_TIMEOUT_MS = 300000;  /* 5 min on radar w/o fill → MISS */
+const PREFILL_FAIL_PCT = 2;       /* drop >2% below detect before fill → MISS */
 const SIG_COOLDOWN_MS  = 180000;  /* 3 min between candidates per coin */
-const IGNITION_VOL     = 3;       /* 3× baseline volume */
-const IGNITION_BA      = 1.5;     /* buyers present */
-const STOP_MAX_PCT     = 12;      /* stop within 12% below entry */
+const IGNITION_VOL     = 3;
+const IGNITION_BA      = 1.5;
+const STOP_MAX_PCT     = 12;
+const GAP_MIN          = 15;      /* min gap % to target */
+const RR_MIN           = 1.5;
 
 function v8load(){ try{const r=localStorage.getItem(V8_KEY); if(r) v8=JSON.parse(r)||[];}catch(e){v8=[];} }
 function v8save(){ try{localStorage.setItem(V8_KEY, JSON.stringify(v8.slice(-300)));}catch(e){} }
@@ -2170,43 +2196,62 @@ function logEv(sig,ev,note){
     sig.events.push({t, utc:fUTC(new Date(t)), ev, note:note||''});
 }
 
-/* ── IGNITION (same conditions as VS7) ── */
-function checkIgnition(coin){
+/* ── SCAN ONE COIN — single source of truth: gates + readiness % ──
+   Updates lastPrice here (the only place), so 'rising' stays correct. */
+function scanCoin(coin){
     const mult=liveMult[coin]||0, ba=baRatio[coin]||1, px=livePrice[coin]||0;
     const prev=lastPrice[coin]||px, rising=px>=prev; lastPrice[coin]=px;
-    return {ok: mult>=IGNITION_VOL && ba>=IGNITION_BA && rising, mult, ba, rising, px};
+
+    let gz=null; try{ gz=calcGapZones(coin); }catch(e){}
+    let gap=0, target=null;
+    if(gz&&gz.best){ gap=gz.best.gain; target=gz.best.px; }
+
+    let stop=0, riskPct=0, rr=0;
+    if(gz&&gz.best&&px>0){
+        const bids=[...(depBids[coin]||[])].sort((a,b)=>b[0]-a[0]);
+        let maxU=0; bids.forEach(b=>{ if(b[0]<px){ const u=b[0]*b[1]; if(u>maxU){maxU=u;stop=b[0];} } });
+        if(stop<=0)stop=px*0.94;
+        riskPct=(px-stop)/px*100;
+        rr=riskPct>0?gap/riskPct:0;
+    }
+
+    const gVol=mult>=IGNITION_VOL, gBA=ba>=IGNITION_BA, gRise=!!rising,
+          gGap=gap>=GAP_MIN, gRisk=(riskPct>0&&riskPct<=STOP_MAX_PCT), gRR=rr>=RR_MIN;
+    const allOK = gVol&&gBA&&gRise&&gGap&&gRisk&&gRR;
+
+    /* readiness 0..100 — weighted, each gate capped at its threshold */
+    const sVol=Math.min(1, IGNITION_VOL>0?mult/IGNITION_VOL:0);
+    const sBA =Math.min(1, IGNITION_BA>0?ba/IGNITION_BA:0);
+    const sGap=Math.min(1, gap/GAP_MIN);
+    const sRR =Math.min(1, rr/RR_MIN);
+    const sRise=rising?1:0;
+    const score=Math.round((sVol*0.30 + sGap*0.30 + sBA*0.20 + sRR*0.15 + sRise*0.05)*100);
+
+    /* blocker = first failing gate (most informative) */
+    let blocker='ready';
+    if(px<=0)            blocker='no price';
+    else if(!gVol)       blocker='vol '+mult.toFixed(1)+'×/'+IGNITION_VOL+'×';
+    else if(!gGap)       blocker=(gap>0?('gap '+gap.toFixed(0)+'%/'+GAP_MIN+'%'):'no gap');
+    else if(!gBA)        blocker='B:A '+ba.toFixed(1)+'/'+IGNITION_BA;
+    else if(!gRise)      blocker='falling';
+    else if(!gRisk)      blocker=(riskPct>0?('risk '+riskPct.toFixed(0)+'%'):'no stop');
+    else if(!gRR)        blocker='R:R '+rr.toFixed(1)+'/'+RR_MIN;
+
+    return {coin,px,mult,ba,rising,gap,target,stop,riskPct,rr,score,allOK,blocker,gz};
 }
 
-/* ── DETECTION → push to RADAR as WATCH (never an instant position) ── */
-function evaluateEntry(coin){
-    if(v8.some(s=>s.coin===coin&&(s.state==='WATCH'||s.state==='FILLED')))return;
-    const now=Date.now();
-    if(sigCooldown[coin]&&now-sigCooldown[coin]<SIG_COOLDOWN_MS)return;
-
-    const ign=checkIgnition(coin); if(!ign.ok)return;
-    const gz=calcGapZones(coin);   if(!gz||!gz.best||gz.best.gain<15)return;
-
-    const px=gz.px;
-    const bids=[...(depBids[coin]||[])].sort((a,b)=>b[0]-a[0]);
-    let stop=0,maxU=0;
-    bids.forEach(b=>{if(b[0]<px){const u=b[0]*b[1]; if(u>maxU){maxU=u;stop=b[0];}}});
-    if(stop<=0)stop=px*0.94;
-    const riskPct=(px-stop)/px*100;
-    if(riskPct>STOP_MAX_PCT||riskPct<=0)return;
-    const gainPct=gz.best.gain, target=gz.best.px, rr=gainPct/riskPct;
-    if(rr<1.5)return;
-
+/* ── FIRE — push confirmed candidate to RADAR as WATCH ── */
+function fireWatch(coin,d){
+    const now=Date.now(), px=d.px;
     const sig={
-        id:'v8_'+now+'_'+coin, coin,
-        state:'WATCH',
+        id:'v8_'+now+'_'+coin, coin, state:'WATCH',
         detTs:now, detUTC:fUTC(new Date(now)),
         detEntry:px, entry:null, filledTs:null, leadMs:null,
-        target, stop,
-        gainPct:+gainPct.toFixed(2), riskPct:+riskPct.toFixed(2), rr:+rr.toFixed(2),
-        trigVol:+ign.mult.toFixed(1), trigBA:+ign.ba.toFixed(2),
-        cls:gz.best.cl.cls, hasFut:gz.hasFut,
-        confirms:0, result:null, closedTs:null, closedPrice:null, closedPct:null,
-        events:[]
+        target:d.target, stop:d.stop,
+        gainPct:+d.gap.toFixed(2), riskPct:+d.riskPct.toFixed(2), rr:+d.rr.toFixed(2),
+        trigVol:+d.mult.toFixed(1), trigBA:+d.ba.toFixed(2),
+        cls:(d.gz&&d.gz.best)?d.gz.best.cl.cls:'THIN', hasFut:d.gz?d.gz.hasFut:false,
+        confirms:0, result:null, closedTs:null, closedPrice:null, closedPct:null, events:[]
     };
     logEv(sig,'DETECTED',`entry\u2248$${fp(px)} \u00b7 vol ${sig.trigVol}\u00d7 \u00b7 B:A ${sig.trigBA} \u00b7 ${sig.cls}`);
     v8.push(sig); sigCooldown[coin]=now; v8save();
@@ -2214,13 +2259,15 @@ function evaluateEntry(coin){
     try{if(navigator.vibrate)navigator.vibrate([30]);}catch(e){}
 }
 
-/* ── RADAR MONITOR — re-validate every WATCH each cycle ── */
-function monitorWatch(){
+/* ── RADAR MONITOR — re-validate every WATCH using this cycle's scan ── */
+function monitorWatch(diagMap){
     let changed=false;
     v8.forEach(s=>{
         if(s.state!=='WATCH')return;
         const now=Date.now();
-        const px=livePrice[s.coin]||0;
+        let d=diagMap&&diagMap[s.coin];
+        if(!d){ try{ d=scanCoin(s.coin); }catch(e){ d=null; } }
+        const px=d?d.px:(livePrice[s.coin]||0);
 
         if(now-s.detTs>WATCH_TIMEOUT_MS){
             s.state='MISS'; s.result='TIMEOUT'; s.closedTs=now;
@@ -2231,13 +2278,13 @@ function monitorWatch(){
             s.state='MISS'; s.result='FAILED'; s.closedTs=now; s.closedPrice=px;
             logEv(s,'MISS',`price fell ${drop}% before fill \u2014 breakout failed`); changed=true; return;
         }
-        const gz=calcGapZones(s.coin);
-        if(!gz||!gz.best||gz.best.gain<15){
+        const gapOK = d && d.gz && d.gz.best && d.gap>=GAP_MIN;
+        if(!gapOK){
             s.state='INVALIDATED'; s.result='WALL_GONE'; s.closedTs=now; s.closedPrice=px;
             logEv(s,'INVALIDATED','thin-wall / gap target dissolved'); changed=true; return;
         }
-        const ign=checkIgnition(s.coin);
-        if(ign.ok){
+        const ignOK = d && d.mult>=IGNITION_VOL && d.ba>=IGNITION_BA && d.rising;
+        if(ignOK){
             s.confirms++;
             if(s.confirms>=CONFIRM_TICKS){
                 s.state='FILLED'; s.entry=px; s.filledTs=now; s.leadMs=now-s.detTs;
@@ -2251,7 +2298,7 @@ function monitorWatch(){
     if(changed)v8save();
 }
 
-/* ── SIMULATION TRACKER — only FILLED positions, realized P&L ── */
+/* ── SIMULATION TRACKER — FILLED positions only, realized P&L ── */
 function trackFilled(){
     let changed=false;
     v8.forEach(s=>{
@@ -2353,6 +2400,25 @@ function lcCard(s){
     </div>`;
 }
 
+/* ── LIVE SCAN DIAGNOSTIC — proves the engine is alive + nominees % ── */
+function renderScanDiag(diags,poolN){
+    const el=document.getElementById('radar-scan'); if(!el)return;
+    const head=`<span class="scan-live"><span class="dot"></span>SCANNING ${poolN}</span>`;
+    const live=(diags||[]).filter(d=>d.px>0);
+    if(!live.length){ el.innerHTML=head+'<span class="scan-empty">waiting for live funnel data\u2026</span>'; return; }
+    const top=[...live].sort((a,b)=>b.score-a.score).slice(0,4);
+    const chips=top.map(d=>{
+        const col=d.score>=80?'var(--g)':d.score>=50?'var(--y)':'#6a6a80';
+        const blk=d.allOK?'<span style="color:var(--g)">READY \u2713</span>':`<span class="scan-blk">${d.blocker}</span>`;
+        return `<span class="scan-chip">
+            <span class="cn">${d.coin.toUpperCase()}</span>
+            <span class="scan-bar"><i style="width:${d.score}%;background:${col}"></i></span>
+            <span class="scan-pct" style="color:${col}">${d.score}%</span>
+            ${blk}</span>`;
+    }).join('');
+    el.innerHTML=head+`<span class="scan-chips">${chips}</span>`;
+}
+
 /* ── RENDER BOTH BOARDS ── */
 function renderLifecycle(){
     const rs=radarScore(), ss=simScore();
@@ -2375,7 +2441,7 @@ function renderLifecycle(){
         const cand=v8.filter(s=>s.state==='WATCH'||s.state==='MISS'||s.state==='INVALIDATED')
                      .sort((a,b)=>(b.closedTs||b.detTs)-(a.closedTs||a.detTs)).slice(0,30);
         rl.innerHTML=cand.length?cand.map(lcCard).join('')
-            :'<div class="sig-empty">Radar clear. A coin appears here the instant a thin-wall runway + ignition is spotted \u2014 BEFORE any fill. It then resolves to FILLED (\u2192 simulation), MISS, or OUT-OF-STRATEGY. No P&amp;L is counted here.</div>';
+            :'<div class="sig-empty">Radar live \u2014 see the scan bar above for how close each coin is. A coin lands here the instant a thin-wall runway + ignition is spotted, BEFORE any fill, then resolves to FILLED (\u2192 simulation), MISS, or OUT-OF-STRATEGY. No P&amp;L is counted here.</div>';
     }
 
     const sb=document.getElementById('sim-sb');
@@ -2403,21 +2469,35 @@ function clearLifecycle(){
     if(!confirm('Clear ALL radar + simulation records? This cannot be undone.'))return;
     v8=[]; v8save(); renderLifecycle();
 }
-const clearSignals=clearLifecycle; /* legacy alias */
+const clearSignals=clearLifecycle;
 
-/* ── ENGINE LOOP ── */
+/* ── ENGINE LOOP — one scan pass feeds detection, monitor, and diagnostic ── */
 function runSignalEngine(){
     const pool=getAlphaPool();
-    pool.forEach(coin=>{ try{evaluateEntry(coin);}catch(e){} });
-    monitorWatch();
+    const now=Date.now();
+    const diagMap={}, diags=[];
+    pool.forEach(coin=>{
+        try{
+            const d=scanCoin(coin);
+            diagMap[coin]=d; diags.push(d);
+            if(d.allOK){
+                const active=v8.some(s=>s.coin===coin&&(s.state==='WATCH'||s.state==='FILLED'));
+                const cooling=sigCooldown[coin]&&(now-sigCooldown[coin]<SIG_COOLDOWN_MS);
+                if(!active&&!cooling) fireWatch(coin,d);
+            }
+        }catch(e){}
+    });
+    monitorWatch(diagMap);
     trackFilled();
     renderLifecycle();
+    renderScanDiag(diags, pool.length);
 }
 
 /* boot lifecycle */
 v8load();
 setInterval(runSignalEngine,3000);
 setTimeout(renderLifecycle,1000);
+
 
 
 /* BOOT */
