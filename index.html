@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0046)file:///C:/Users/lenovo/Downloads/index_2.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mirjan Scanner V2 — MG Domain · Radar + Simulation + Liquidity Gate</title>
-<link href="./index_files/css2" rel="stylesheet">
+<title>Mirjan Scanner V3 — MG Domain · Radar + Simulation + Liquidity Gate</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
     --o:#ff8c00;--g:#00ff88;--r:#ff3333;--y:#fcd535;
@@ -405,7 +405,7 @@ h1{font-family:var(--dp);color:var(--o);font-size:22px;letter-spacing:5px;font-w
 .scan-empty{color:#8a8a9e;}
 /* ══ V2: scan adj + version badge + global regime ══ */
 .scan-adj{font-family:var(--dp);font-weight:700;font-size:12px;}
-.v2-badge{font-family:var(--dp);font-size:14px;font-weight:900;letter-spacing:2px;color:#00ff88;border:1.5px solid rgba(0,255,136,.5);border-radius:5px;padding:2px 8px;box-shadow:0 0 10px rgba(0,255,136,.25);}
+.v3-badge{font-family:var(--dp);font-size:14px;font-weight:900;letter-spacing:2px;color:#00ff88;border:1.5px solid rgba(0,255,136,.5);border-radius:5px;padding:2px 8px;box-shadow:0 0 10px rgba(0,255,136,.25);}
 .regime-bar{background:#06060c;border:1px solid var(--bd);border-radius:8px;padding:9px 11px;margin-bottom:12px;font-family:var(--mono);}
 .rg-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;}
 .rg-title{font-family:var(--dp);font-size:13px;font-weight:700;letter-spacing:1px;color:var(--b);}
@@ -423,10 +423,10 @@ h1{font-family:var(--dp);color:var(--o);font-size:22px;letter-spacing:5px;font-w
 
 <!-- LEGAL -->
 <!-- SUBSCRIPTION GATE -->
-<div class="sub-gate hidden" id="sub-gate">
+<div class="sub-gate" id="sub-gate">
     <div class="sub-box">
         <div class="sub-logo">MIRJAN SCANNER</div>
-        <div class="sub-vs1-txt">V   S 1   SUBSCRIPTION</div>
+        <div class="sub-vs1-txt">V &thinsp; S 1 &thinsp; SUBSCRIPTION</div>
         <div class="sub-desc">Unlock the Triple Squeeze Confirmation Engine — the most advanced BOOM signal in the MG Domain suite.</div>
         <div class="sub-features">
             <div class="sub-feat"><span>🔥</span><span>Triple Squeeze Confirmation — Volume + Liquidity + Funding</span></div>
@@ -435,11 +435,12 @@ h1{font-family:var(--dp);color:var(--o);font-size:22px;letter-spacing:5px;font-w
             <div class="sub-feat"><span>🚨</span><span>Golden Ratio RSI Siren — 3H/4H/8H multi-timeframe</span></div>
             <div class="sub-feat"><span>⚡</span><span>Auto Top-15 Heavy Players + Binance Alpha Scanner</span></div>
         </div>
-        <input class="sub-inp" id="sub-key" type="text" placeholder="ENTER SUBSCRIPTION KEY" maxlength="20">
+        <input class="sub-inp" id="sub-key" type="text" placeholder="ENTER SUBSCRIPTION KEY" maxlength="20"/>
         <button class="sub-btn" onclick="activateS1()">ACTIVATE S1 ACCESS</button>
         <div class="sub-err" id="sub-err"></div>
         <div style="margin-top:14px">
-<button onclick="document.getElementById(&#39;sub-key&#39;).value=&#39;MG-S1-ALPHA-2026&#39;;activateS1();" style="width:100%;padding:12px;background:rgba(0,255,136,.15);border:2px solid rgba(0,255,136,.5);color:#00ff88;font-family:&#39;Orbitron&#39;,sans-serif;font-size:12px;font-weight:900;letter-spacing:3px;border-radius:6px;cursor:pointer;">
+<button onclick="document.getElementById('sub-key').value='MG-S1-ALPHA-2026';activateS1();"
+  style="width:100%;padding:12px;background:rgba(0,255,136,.15);border:2px solid rgba(0,255,136,.5);color:#00ff88;font-family:'Orbitron',sans-serif;font-size:12px;font-weight:900;letter-spacing:3px;border-radius:6px;cursor:pointer;">
   ▶ ENTER SCANNER
 </button>
 <div style="font-size:10px;color:#7a7a8e;text-align:center;margin-top:5px">MG-S1-ALPHA-2026</div>
@@ -458,205 +459,37 @@ h1{font-family:var(--dp);color:var(--o);font-size:22px;letter-spacing:5px;font-w
     <div>
         <div style="display:flex;align-items:baseline;gap:14px;">
             <h1>Mirjan Scanner</h1>
-            <span class="v2-badge">V2</span>
-            <span style="font-family:var(--dp);font-size:20px;font-weight:900;letter-spacing:3px;background:linear-gradient(135deg,#ffd700,#ff8c00,#fcd535);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 8px rgba(255,215,0,.4))">V   S1</span>
+            <span class="v3-badge">V3</span>
+            <span style="font-family:var(--dp);font-size:20px;font-weight:900;letter-spacing:3px;background:linear-gradient(135deg,#ffd700,#ff8c00,#fcd535);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 8px rgba(255,215,0,.4))">V &thinsp; S1</span>
         </div>
-        <div class="vtag">V2 · LIQUIDITY GATE · GLOBAL REGIME DIAL · RADAR + SIMULATION · LIVE SCAN % · WALL MONITOR · MG DOMAIN</div>
+        <div class="vtag">V3 · HONEST READINESS · LIQUIDITY GATE · GLOBAL REGIME DIAL · RADAR + SIMULATION · LIVE SCAN % · WALL MONITOR · MG DOMAIN</div>
         <div class="srow" style="margin-top:8px;">
-            <div class="cbadge"><span class="dot dot-g" id="d-all"></span><span id="l-all" style="color: var(--g);">ALL-TICKER</span></div>
-            <div class="cbadge"><span class="dot dot-g" id="d-heavy"></span><span id="l-heavy" style="color: var(--g);">HEAVY WS</span></div>
-            <div class="cbadge"><span class="dot dot-g" id="d-alpha"></span><span id="l-alpha" style="color: var(--g);">ALPHA WS</span></div>
-            <div class="cbadge"><span class="dot dot-g" id="d-liq"></span><span id="l-liq" style="color: var(--g);">BNB LIQ</span></div>
-            <div class="cbadge"><span class="dot dot-r" id="d-okx"></span><span id="l-okx" style="color: var(--r);">OKX LIQ</span></div>
-            <div class="cbadge"><span class="dot dot-g" id="d-mtf0"></span><span id="l-mtf0" style="color: var(--g);">RSI-φ A</span></div>
-            <div class="cbadge"><span class="dot dot-g" id="d-mtf1"></span><span id="l-mtf1" style="color: var(--g);">RSI-φ B</span></div>
-            <div class="cbadge"><span class="dot dot-g" id="d-fund"></span><span id="l-fund" style="color: var(--g);">FUNDING</span></div>
+            <div class="cbadge"><span class="dot dot-x" id="d-all"></span><span id="l-all" style="color:#7a7a8e">ALL-TICKER</span></div>
+            <div class="cbadge"><span class="dot dot-x" id="d-heavy"></span><span id="l-heavy" style="color:#7a7a8e">HEAVY WS</span></div>
+            <div class="cbadge"><span class="dot dot-x" id="d-alpha"></span><span id="l-alpha" style="color:#7a7a8e">ALPHA WS</span></div>
+            <div class="cbadge"><span class="dot dot-x" id="d-liq"></span><span id="l-liq" style="color:#7a7a8e">BNB LIQ</span></div>
+            <div class="cbadge"><span class="dot dot-x" id="d-okx"></span><span id="l-okx" style="color:#7a7a8e">OKX LIQ</span></div>
+            <div class="cbadge"><span class="dot dot-x" id="d-mtf0"></span><span id="l-mtf0" style="color:#7a7a8e">RSI-φ A</span></div>
+            <div class="cbadge"><span class="dot dot-x" id="d-mtf1"></span><span id="l-mtf1" style="color:#7a7a8e">RSI-φ B</span></div>
+            <div class="cbadge"><span class="dot dot-x" id="d-fund"></span><span id="l-fund" style="color:#7a7a8e">FUNDING</span></div>
         </div>
     </div>
-    <div><div class="gmt-blk"><div class="gmt-lbl">UTC / GMT</div><div class="gmt-time" id="gmt-time">20:29:09</div><div class="gmt-date" id="gmt-date">SAT 06 JUN 2026</div></div></div>
+    <div><div class="gmt-blk"><div class="gmt-lbl">UTC / GMT</div><div class="gmt-time" id="gmt-time">--:--:--</div><div class="gmt-date" id="gmt-date">--- -- ----</div></div></div>
 </header>
 
 <div class="mwrap">
 
 <!-- ══ DOMINANT ══ -->
 <div>
-    <div class="sh"><span class="sl dom">⚡ Dominant</span><span class="sb sb-y">LIVE #1 SPOT AUTO-DETECTED</span><span id="dom-ba-hdr" style="margin-left:auto;font-size:12px;font-family:&#39;Orbitron&#39;,sans-serif;color:#b89c2c;"></span></div>
+    <div class="sh"><span class="sl dom">⚡ Dominant</span><span class="sb sb-y">LIVE #1 SPOT AUTO-DETECTED</span><span id="dom-ba-hdr" style="margin-left:auto;font-size:12px;font-family:'Orbitron',sans-serif;color:#b89c2c;"></span></div>
     <div class="dom-strip">
         <div>
-            <div class="dom-sym" id="dom-sym">BTC</div>
-            <div class="dom-vol" id="dom-vol">24H: $1.48B</div>
-            <div class="dom-ba" id="dom-ba" style="color: rgb(68, 68, 68);">B:A = 0.02 </div>
+            <div class="dom-sym" id="dom-sym">SCANNING</div>
+            <div class="dom-vol" id="dom-vol">24H VOL: ---</div>
+            <div class="dom-ba" id="dom-ba">B:A ---</div>
             <div class="dom-hits" id="dom-hits"></div>
         </div>
-        <div class="dom-dials" id="dom-dials">
-    <div class="mdw">
-        <div class="mtl">3×</div>
-        <div class="gauge-wrap" style="width:50px;height:38px;" id="dd-3"><svg viewBox="0 0 50 38" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <filter id="g3rbxa"><fegaussianblur stdDeviation="2.5" result="b"></fegaussianblur>
-            <femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
-        </defs>
-        <!-- BG arc -->
-        <path d="M 6.0 28 A 19 19 0 0 1 44.0 28" stroke="#1a1a26" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Zone tints -->
-        <path d="M 6.0 28 A 19 19 0 0 1 11.6 14.6" stroke="rgba(0,255,136,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 25.0 9.0 A 19 19 0 0 1 38.4 14.6" stroke="rgba(255,140,0,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 38.4 14.6 A 19 19 0 0 1 44.0 28" stroke="rgba(255,51,51,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Progress arc -->
-        <path d="M 6.0 28 A 19 19 0 0 1 7.6 20.5" stroke="#fcd535" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Glow tip -->
-        <circle cx="7.6" cy="20.5" r="4" fill="#fcd535" opacity=".6" filter="url(#g3rbxa)"></circle>
-        <!-- Tick marks -->
-        <line x1="15.0" y1="28.0" x2="4.0" y2="28.0" stroke="#333" stroke-width="1.5"></line><line x1="17.9" y1="20.9" x2="10.2" y2="13.2" stroke="#1e1e28" stroke-width="1"></line><line x1="25.0" y1="18.0" x2="25.0" y2="7.0" stroke="#333" stroke-width="1.5"></line><line x1="32.1" y1="20.9" x2="39.8" y2="13.2" stroke="#1e1e28" stroke-width="1"></line><line x1="35.0" y1="28.0" x2="46.0" y2="28.0" stroke="#333" stroke-width="1.5"></line>
-        <!-- Needle -->
-        <line x1="25" y1="28" x2="17.7" y2="24.8" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round"></line>
-        <circle cx="25" cy="28" r="3" fill="#fcd535" opacity=".9"></circle>
-        <circle cx="25" cy="28" r="2" fill="#09090e"></circle>
-        <!-- Label -->
-        <text x="25" y="42" text-anchor="middle" fill="#fcd535" font-family="Orbitron,sans-serif" font-size="10" font-weight="700">13%</text>
-    </svg></div>
-        <div style="font-size:10px;color:#a08840;" id="ddt-3">--</div>
-    </div>
-    <div class="mdw">
-        <div class="mtl">9×</div>
-        <div class="gauge-wrap" style="width:50px;height:38px;" id="dd-9"><svg viewBox="0 0 50 38" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <filter id="g13sna"><fegaussianblur stdDeviation="2.5" result="b"></fegaussianblur>
-            <femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
-        </defs>
-        <!-- BG arc -->
-        <path d="M 6.0 28 A 19 19 0 0 1 44.0 28" stroke="#1a1a26" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Zone tints -->
-        <path d="M 6.0 28 A 19 19 0 0 1 11.6 14.6" stroke="rgba(0,255,136,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 25.0 9.0 A 19 19 0 0 1 38.4 14.6" stroke="rgba(255,140,0,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 38.4 14.6 A 19 19 0 0 1 44.0 28" stroke="rgba(255,51,51,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Progress arc -->
-        <path d="M 6.0 28 A 19 19 0 0 1 6.1 25.6" stroke="#ff8c00" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Glow tip -->
-        <circle cx="6.1" cy="25.6" r="4" fill="#ff8c00" opacity=".6" filter="url(#g13sna)"></circle>
-        <!-- Tick marks -->
-        <line x1="15.0" y1="28.0" x2="4.0" y2="28.0" stroke="#333" stroke-width="1.5"></line><line x1="17.9" y1="20.9" x2="10.2" y2="13.2" stroke="#1e1e28" stroke-width="1"></line><line x1="25.0" y1="18.0" x2="25.0" y2="7.0" stroke="#333" stroke-width="1.5"></line><line x1="32.1" y1="20.9" x2="39.8" y2="13.2" stroke="#1e1e28" stroke-width="1"></line><line x1="35.0" y1="28.0" x2="46.0" y2="28.0" stroke="#333" stroke-width="1.5"></line>
-        <!-- Needle -->
-        <line x1="25" y1="28" x2="17.1" y2="27.0" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round"></line>
-        <circle cx="25" cy="28" r="3" fill="#ff8c00" opacity=".9"></circle>
-        <circle cx="25" cy="28" r="2" fill="#09090e"></circle>
-        <!-- Label -->
-        <text x="25" y="42" text-anchor="middle" fill="#ff8c00" font-family="Orbitron,sans-serif" font-size="10" font-weight="700">4%</text>
-    </svg></div>
-        <div style="font-size:10px;color:#a08840;" id="ddt-9">--</div>
-    </div>
-    <div class="mdw">
-        <div class="mtl">27×</div>
-        <div class="gauge-wrap" style="width:50px;height:38px;" id="dd-27"><svg viewBox="0 0 50 38" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <filter id="gm0xwq"><fegaussianblur stdDeviation="2.5" result="b"></fegaussianblur>
-            <femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
-        </defs>
-        <!-- BG arc -->
-        <path d="M 6.0 28 A 19 19 0 0 1 44.0 28" stroke="#1a1a26" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Zone tints -->
-        <path d="M 6.0 28 A 19 19 0 0 1 11.6 14.6" stroke="rgba(0,255,136,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 25.0 9.0 A 19 19 0 0 1 38.4 14.6" stroke="rgba(255,140,0,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 38.4 14.6 A 19 19 0 0 1 44.0 28" stroke="rgba(255,51,51,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Progress arc -->
-        
-        <!-- Glow tip -->
-        
-        <!-- Tick marks -->
-        <line x1="15.0" y1="28.0" x2="4.0" y2="28.0" stroke="#333" stroke-width="1.5"></line><line x1="17.9" y1="20.9" x2="10.2" y2="13.2" stroke="#1e1e28" stroke-width="1"></line><line x1="25.0" y1="18.0" x2="25.0" y2="7.0" stroke="#333" stroke-width="1.5"></line><line x1="32.1" y1="20.9" x2="39.8" y2="13.2" stroke="#1e1e28" stroke-width="1"></line><line x1="35.0" y1="28.0" x2="46.0" y2="28.0" stroke="#333" stroke-width="1.5"></line>
-        <!-- Needle -->
-        <line x1="25" y1="28" x2="17.0" y2="28.0" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round"></line>
-        <circle cx="25" cy="28" r="3" fill="#ff6600" opacity=".9"></circle>
-        <circle cx="25" cy="28" r="2" fill="#09090e"></circle>
-        <!-- Label -->
-        <text x="25" y="42" text-anchor="middle" fill="#ff6600" font-family="Orbitron,sans-serif" font-size="10" font-weight="700">0%</text>
-    </svg></div>
-        <div style="font-size:10px;color:#a08840;" id="ddt-27">--</div>
-    </div>
-    <div class="mdw">
-        <div class="mtl">81×</div>
-        <div class="gauge-wrap" style="width:50px;height:38px;" id="dd-81"><svg viewBox="0 0 50 38" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <filter id="gypn7o"><fegaussianblur stdDeviation="2.5" result="b"></fegaussianblur>
-            <femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
-        </defs>
-        <!-- BG arc -->
-        <path d="M 6.0 28 A 19 19 0 0 1 44.0 28" stroke="#1a1a26" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Zone tints -->
-        <path d="M 6.0 28 A 19 19 0 0 1 11.6 14.6" stroke="rgba(0,255,136,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 25.0 9.0 A 19 19 0 0 1 38.4 14.6" stroke="rgba(255,140,0,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 38.4 14.6 A 19 19 0 0 1 44.0 28" stroke="rgba(255,51,51,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Progress arc -->
-        
-        <!-- Glow tip -->
-        
-        <!-- Tick marks -->
-        <line x1="15.0" y1="28.0" x2="4.0" y2="28.0" stroke="#333" stroke-width="1.5"></line><line x1="17.9" y1="20.9" x2="10.2" y2="13.2" stroke="#1e1e28" stroke-width="1"></line><line x1="25.0" y1="18.0" x2="25.0" y2="7.0" stroke="#333" stroke-width="1.5"></line><line x1="32.1" y1="20.9" x2="39.8" y2="13.2" stroke="#1e1e28" stroke-width="1"></line><line x1="35.0" y1="28.0" x2="46.0" y2="28.0" stroke="#333" stroke-width="1.5"></line>
-        <!-- Needle -->
-        <line x1="25" y1="28" x2="17.0" y2="28.0" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round"></line>
-        <circle cx="25" cy="28" r="3" fill="#ff44aa" opacity=".9"></circle>
-        <circle cx="25" cy="28" r="2" fill="#09090e"></circle>
-        <!-- Label -->
-        <text x="25" y="42" text-anchor="middle" fill="#ff44aa" font-family="Orbitron,sans-serif" font-size="10" font-weight="700">0%</text>
-    </svg></div>
-        <div style="font-size:10px;color:#a08840;" id="ddt-81">--</div>
-    </div>
-    <div class="mdw">
-        <div class="mtl">243×</div>
-        <div class="gauge-wrap" style="width:50px;height:38px;" id="dd-243"><svg viewBox="0 0 50 38" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <filter id="g2vqha"><fegaussianblur stdDeviation="2.5" result="b"></fegaussianblur>
-            <femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
-        </defs>
-        <!-- BG arc -->
-        <path d="M 6.0 28 A 19 19 0 0 1 44.0 28" stroke="#1a1a26" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Zone tints -->
-        <path d="M 6.0 28 A 19 19 0 0 1 11.6 14.6" stroke="rgba(0,255,136,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 25.0 9.0 A 19 19 0 0 1 38.4 14.6" stroke="rgba(255,140,0,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 38.4 14.6 A 19 19 0 0 1 44.0 28" stroke="rgba(255,51,51,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Progress arc -->
-        
-        <!-- Glow tip -->
-        
-        <!-- Tick marks -->
-        <line x1="15.0" y1="28.0" x2="4.0" y2="28.0" stroke="#333" stroke-width="1.5"></line><line x1="17.9" y1="20.9" x2="10.2" y2="13.2" stroke="#1e1e28" stroke-width="1"></line><line x1="25.0" y1="18.0" x2="25.0" y2="7.0" stroke="#333" stroke-width="1.5"></line><line x1="32.1" y1="20.9" x2="39.8" y2="13.2" stroke="#1e1e28" stroke-width="1"></line><line x1="35.0" y1="28.0" x2="46.0" y2="28.0" stroke="#333" stroke-width="1.5"></line>
-        <!-- Needle -->
-        <line x1="25" y1="28" x2="17.0" y2="28.0" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round"></line>
-        <circle cx="25" cy="28" r="3" fill="#00ffcc" opacity=".9"></circle>
-        <circle cx="25" cy="28" r="2" fill="#09090e"></circle>
-        <!-- Label -->
-        <text x="25" y="42" text-anchor="middle" fill="#00ffcc" font-family="Orbitron,sans-serif" font-size="10" font-weight="700">0%</text>
-    </svg></div>
-        <div style="font-size:10px;color:#a08840;" id="ddt-243">--</div>
-    </div>
-    <div class="mdw">
-        <div class="mtl">729×</div>
-        <div class="gauge-wrap" style="width:50px;height:38px;" id="dd-729"><svg viewBox="0 0 50 38" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <filter id="gyz40g"><fegaussianblur stdDeviation="2.5" result="b"></fegaussianblur>
-            <femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
-        </defs>
-        <!-- BG arc -->
-        <path d="M 6.0 28 A 19 19 0 0 1 44.0 28" stroke="#1a1a26" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Zone tints -->
-        <path d="M 6.0 28 A 19 19 0 0 1 11.6 14.6" stroke="rgba(0,255,136,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 25.0 9.0 A 19 19 0 0 1 38.4 14.6" stroke="rgba(255,140,0,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 38.4 14.6 A 19 19 0 0 1 44.0 28" stroke="rgba(255,51,51,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Progress arc -->
-        
-        <!-- Glow tip -->
-        
-        <!-- Tick marks -->
-        <line x1="15.0" y1="28.0" x2="4.0" y2="28.0" stroke="#333" stroke-width="1.5"></line><line x1="17.9" y1="20.9" x2="10.2" y2="13.2" stroke="#1e1e28" stroke-width="1"></line><line x1="25.0" y1="18.0" x2="25.0" y2="7.0" stroke="#333" stroke-width="1.5"></line><line x1="32.1" y1="20.9" x2="39.8" y2="13.2" stroke="#1e1e28" stroke-width="1"></line><line x1="35.0" y1="28.0" x2="46.0" y2="28.0" stroke="#333" stroke-width="1.5"></line>
-        <!-- Needle -->
-        <line x1="25" y1="28" x2="17.0" y2="28.0" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round"></line>
-        <circle cx="25" cy="28" r="3" fill="#cc66ff" opacity=".9"></circle>
-        <circle cx="25" cy="28" r="2" fill="#09090e"></circle>
-        <!-- Label -->
-        <text x="25" y="42" text-anchor="middle" fill="#cc66ff" font-family="Orbitron,sans-serif" font-size="10" font-weight="700">0%</text>
-    </svg></div>
-        <div style="font-size:10px;color:#a08840;" id="ddt-729">--</div>
-    </div></div>
+        <div class="dom-dials" id="dom-dials"></div>
     </div>
 </div>
 
@@ -668,7 +501,7 @@ h1{font-family:var(--dp);color:var(--o);font-size:22px;letter-spacing:5px;font-w
         <!-- ALPHA SEARCH — inline -->
         <div style="display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;">
             <span style="font-size:11px;color:var(--b);font-family:var(--dp);letter-spacing:2px;white-space:nowrap;">🔍 ALPHA</span>
-            <input class="search-inp" id="alpha-search" type="text" placeholder="SYMBOL e.g. POPCAT" maxlength="12" style="width:160px;padding:5px 10px;font-size:12px;">
+            <input class="search-inp" id="alpha-search" type="text" placeholder="SYMBOL e.g. POPCAT" maxlength="12" style="width:160px;padding:5px 10px;font-size:12px;"/>
             <button class="search-btn" onclick="searchAlpha()" style="padding:5px 12px;font-size:10px;">ANALYSE</button>
             <div class="search-msg" id="search-msg" style="font-size:11px;min-width:80px;"></div>
         </div>
@@ -691,7 +524,7 @@ h1{font-family:var(--dp);color:var(--o);font-size:22px;letter-spacing:5px;font-w
             <div style="display:flex;flex-direction:column;gap:8px;">
                 <button onclick="openModal(searchResultCoin)" style="background:rgba(0,170,255,.12);border:1px solid rgba(0,170,255,.35);color:var(--b);padding:8px 14px;font-family:var(--dp);font-size:10px;letter-spacing:2px;border-radius:4px;cursor:pointer;white-space:nowrap;">📊 FULL ANALYSIS</button>
                 <button onclick="openNewWindow(searchResultCoin)" style="background:rgba(0,255,136,.08);border:1px solid rgba(0,255,136,.25);color:var(--g);padding:8px 14px;font-family:var(--dp);font-size:10px;letter-spacing:2px;border-radius:4px;cursor:pointer;white-space:nowrap;">🔗 NEW WINDOW</button>
-                <button onclick="document.getElementById(&#39;search-result-panel&#39;).style.display=&#39;none&#39;" style="background:transparent;border:1px solid #222;color:#8a8a9e;padding:6px 14px;font-family:var(--mono);font-size:10px;border-radius:4px;cursor:pointer;">CLOSE</button>
+                <button onclick="document.getElementById('search-result-panel').style.display='none'" style="background:transparent;border:1px solid #222;color:#8a8a9e;padding:6px 14px;font-family:var(--mono);font-size:10px;border-radius:4px;cursor:pointer;">CLOSE</button>
             </div>
         </div>
         <!-- Squeeze bar for searched coin -->
@@ -717,19 +550,19 @@ h1{font-family:var(--dp);color:var(--o);font-size:22px;letter-spacing:5px;font-w
             </div>
             <!-- Center: Gauge + Signal -->
             <div class="agg-center">
-                <div class="agg-value" id="agg-value" style="color: rgb(102, 102, 102);">0.99</div>
-                <div class="agg-signal" id="agg-signal" style="color: rgb(102, 102, 102);">NEUTRAL</div>
-                <div class="agg-ratio" id="agg-ratio">Pool avg B:A: 0.99 (16 coins) — Raw Bids: 536.84B / Asks: 690.52B</div>
+                <div class="agg-value" id="agg-value" style="color:var(--sp);">1.00</div>
+                <div class="agg-signal" id="agg-signal" style="color:var(--sp);">NEUTRAL</div>
+                <div class="agg-ratio" id="agg-ratio">Bids: --- · Asks: ---</div>
                 <div class="agg-bar-wrap" style="margin-top:8px;">
                     <div class="agg-bar-zones">
                         <div class="agg-zone-r"></div>
                         <div class="agg-zone-n"></div>
                         <div class="agg-zone-g"></div>
                     </div>
-                    <div class="agg-needle" id="agg-needle" style="left: 43.7395%;"></div>
+                    <div class="agg-needle" id="agg-needle" style="left:50%"></div>
                 </div>
                 <div class="agg-labels"><span style="color:var(--r);">← LONG SQUEEZE</span><span>NEUTRAL</span><span style="color:var(--g);">SHORT SQUEEZE →</span></div>
-                <div id="agg-level-tag" class="sb sb-sp" style="margin-top:6px;">— LEVEL 2 — NEUTRAL MARKET</div>
+                <div id="agg-level-tag" class="sb sb-sp" style="margin-top:6px;">LOADING...</div>
             </div>
             <!-- Level 3: Short Squeeze -->
             <div class="agg-zone squeeze-short">
@@ -743,11 +576,11 @@ h1{font-family:var(--dp);color:var(--o);font-size:22px;letter-spacing:5px;font-w
 
 
 <!-- S1 EXCLUSIVE: TRIPLE SQUEEZE CONFIRMATION -->
-<div class="s1-locked unlocked" id="s1-boom-section">
+<div class="s1-locked" id="s1-boom-section">
     <div class="sh" style="margin-bottom:10px;">
         <span class="sl" style="color:#ff2266;font-family:var(--dp);font-size:11px;letter-spacing:3px;font-weight:700;">🔥 Triple Squeeze Confirmation</span>
         <span class="sb" style="background:rgba(255,34,102,.08);border:1px solid rgba(255,34,102,.25);color:#ff2266;font-size:9px;padding:2px 7px;border-radius:2px;">S1 EXCLUSIVE · BOOM SIGNAL ENGINE</span>
-        <span style="margin-left:auto;font-size:10px;font-family:var(--dp);letter-spacing:1px;" id="boom-top-hdr">WHEN ALL 3 ALIGN = 💥 BOOM</span>
+        <span style="margin-left:auto;font-size:10px;font-family:var(--dp);letter-spacing:1px;" id="boom-top-hdr" style="color:#7a7a8e;">WHEN ALL 3 ALIGN = 💥 BOOM</span>
     </div>
     <div class="boom-panel">
         <div class="boom-grid">
@@ -756,8 +589,8 @@ h1{font-family:var(--dp);color:var(--o);font-size:22px;letter-spacing:5px;font-w
                 <div class="sig-title" style="color:var(--o)">📊 VOLUME CASCADE</div>
                 <div style="font-size:10px;color:#9a9aae;letter-spacing:.5px;line-height:1.5;margin-bottom:8px;">X-Level ≥9× confirmed + velocity accelerating = momentum real and building.</div>
                 <div class="sig-metric"><span>Best tier hit</span><span class="sig-mval" id="s1-tier" style="color:var(--o)">--×</span></div>
-                <div class="sig-metric"><span>Multiplier now</span><span class="sig-mval" id="s1-vel" style="color:var(--o)">0.1×</span></div>
-                <div class="sig-metric"><span>Leading coin</span><span class="sig-mval" id="s1-coin" style="color:#fff">PNUT</span></div>
+                <div class="sig-metric"><span>Multiplier now</span><span class="sig-mval" id="s1-vel" style="color:var(--o)">---</span></div>
+                <div class="sig-metric"><span>Leading coin</span><span class="sig-mval" id="s1-coin" style="color:#fff">---</span></div>
                 <div class="cbar-wrap"><div class="cbar" id="s1-bar" style="width:0%;background:var(--o)"></div></div>
                 <div class="cpct" id="s1-pct" style="color:var(--o)">0%</div>
             </div>
@@ -765,55 +598,32 @@ h1{font-family:var(--dp);color:var(--o);font-size:22px;letter-spacing:5px;font-w
                 <div class="sig-num">SIGNAL 02 · 35% WEIGHT</div>
                 <div class="sig-title" style="color:var(--ig)">📚 LIQUIDITY VACUUM</div>
                 <div style="font-size:10px;color:#9a9aae;letter-spacing:.5px;line-height:1.5;margin-bottom:8px;">B:A ≥3:1 — sellers gone. Thin ask wall = small buys move price hard. Shorts cannot exit.</div>
-                <div class="sig-metric"><span>Best B:A in pool</span><span class="sig-mval" id="s2-ba" style="color:var(--ig)">2.16:1</span></div>
+                <div class="sig-metric"><span>Best B:A in pool</span><span class="sig-mval" id="s2-ba" style="color:var(--ig)">---</span></div>
                 <div class="sig-metric"><span>SPARK coins ≥3:1</span><span class="sig-mval" id="s2-spark" style="color:var(--sp)">0</span></div>
                 <div class="sig-metric"><span>IGNITE coins ≥4:1</span><span class="sig-mval" id="s2-ignite" style="color:var(--ig)">0</span></div>
-                <div class="cbar-wrap"><div class="cbar" id="s2-bar" style="width: 50%; background: var(--ig);"></div></div>
-                <div class="cpct" id="s2-pct" style="color:var(--ig)">50%</div>
+                <div class="cbar-wrap"><div class="cbar" id="s2-bar" style="width:0%;background:var(--ig)"></div></div>
+                <div class="cpct" id="s2-pct" style="color:var(--ig)">0%</div>
             </div>
             <div class="sig-card" id="sig3">
                 <div class="sig-num">SIGNAL 03 · 30% WEIGHT</div>
                 <div class="sig-title" style="color:#aa44ff">⚡ SHORT FUEL · FUNDING</div>
                 <div style="font-size:10px;color:#9a9aae;letter-spacing:.5px;line-height:1.5;margin-bottom:8px;">Funding &lt;0% = shorts crowded + paying. RSI 3H ≥70 = price rising through them = forced cascade.</div>
-                <div class="sig-metric"><span>Funding rate</span><span class="sig-mval" id="s3-fund" style="color: rgb(138, 240, 138);">-0.0031%</span></div>
-                <div class="sig-metric"><span>Max RSI 3H</span><span class="sig-mval" id="s3-rsi" style="color:#aa44ff">--</span></div>
-                <div class="sig-metric"><span>RSI coin</span><span class="sig-mval" id="s3-coin" style="color:#fff">PNUT</span></div>
-                <div class="cbar-wrap"><div class="cbar" id="s3-bar" style="width: 25%; background: rgb(170, 68, 255);"></div></div>
-                <div class="cpct" id="s3-pct" style="color:#aa44ff">25%</div>
+                <div class="sig-metric"><span>Funding rate</span><span class="sig-mval" id="s3-fund" style="color:#aa44ff">---</span></div>
+                <div class="sig-metric"><span>Max RSI 3H</span><span class="sig-mval" id="s3-rsi" style="color:#aa44ff">---</span></div>
+                <div class="sig-metric"><span>RSI coin</span><span class="sig-mval" id="s3-coin" style="color:#fff">---</span></div>
+                <div class="cbar-wrap"><div class="cbar" id="s3-bar" style="width:0%;background:#aa44ff"></div></div>
+                <div class="cpct" id="s3-pct" style="color:#aa44ff">0%</div>
             </div>
         </div>
         <div class="boom-score-wrap">
             <div style="font-family:var(--dp);font-size:9px;letter-spacing:3px;color:#7a7a90;margin-bottom:8px;">BOOM CONFIDENCE — TOP CANDIDATES</div>
             <div class="boom-layout">
-                <div class="boom-candidates" id="boom-cands"><div class="boom-cand watch"><span class="bc-coin" style="color:#2a2a38">PNUT</span><div class="bc-bw"><div class="bc-bf" style="width:25%;background:#2a2a38"></div></div><span class="bc-pct" style="color:#2a2a38">25%</span><span class="bc-tag" style="background:rgba(28,28,38,.5);border:1px solid #222;color:#7a7a8e;">WATCH</span></div><div class="boom-cand watch"><span class="bc-coin" style="color:#2a2a38">BTC</span><div class="bc-bw"><div class="bc-bf" style="width:8%;background:#2a2a38"></div></div><span class="bc-pct" style="color:#2a2a38">8%</span><span class="bc-tag" style="background:rgba(28,28,38,.5);border:1px solid #222;color:#7a7a8e;">WATCH</span></div><div class="boom-cand watch"><span class="bc-coin" style="color:#2a2a38">ETH</span><div class="bc-bw"><div class="bc-bf" style="width:8%;background:#2a2a38"></div></div><span class="bc-pct" style="color:#2a2a38">8%</span><span class="bc-tag" style="background:rgba(28,28,38,.5);border:1px solid #222;color:#7a7a8e;">WATCH</span></div><div class="boom-cand watch"><span class="bc-coin" style="color:#2a2a38">SOL</span><div class="bc-bw"><div class="bc-bf" style="width:8%;background:#2a2a38"></div></div><span class="bc-pct" style="color:#2a2a38">8%</span><span class="bc-tag" style="background:rgba(28,28,38,.5);border:1px solid #222;color:#7a7a8e;">WATCH</span></div><div class="boom-cand watch"><span class="bc-coin" style="color:#2a2a38">XRP</span><div class="bc-bw"><div class="bc-bf" style="width:8%;background:#2a2a38"></div></div><span class="bc-pct" style="color:#2a2a38">8%</span><span class="bc-tag" style="background:rgba(28,28,38,.5);border:1px solid #222;color:#7a7a8e;">WATCH</span></div><div class="boom-cand watch"><span class="bc-coin" style="color:#2a2a38">WLD</span><div class="bc-bw"><div class="bc-bf" style="width:8%;background:#2a2a38"></div></div><span class="bc-pct" style="color:#2a2a38">8%</span><span class="bc-tag" style="background:rgba(28,28,38,.5);border:1px solid #222;color:#7a7a8e;">WATCH</span></div><div class="boom-cand watch"><span class="bc-coin" style="color:#2a2a38">DOGE</span><div class="bc-bw"><div class="bc-bf" style="width:8%;background:#2a2a38"></div></div><span class="bc-pct" style="color:#2a2a38">8%</span><span class="bc-tag" style="background:rgba(28,28,38,.5);border:1px solid #222;color:#7a7a8e;">WATCH</span></div></div>
+                <div class="boom-candidates" id="boom-cands"><div style="color:#707088;font-size:11px;padding:6px">Waiting for data...</div></div>
                 <div class="boom-arc">
-                    <div style="width:110px;height:75px;" id="boom-arc"><svg viewBox="0 0 110 75" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <filter id="gci3ht"><fegaussianblur stdDeviation="2.5" result="b"></fegaussianblur>
-            <femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
-        </defs>
-        <!-- BG arc -->
-        <path d="M 6.0 65 A 49 49 0 0 1 104.0 65" stroke="#1a1a26" stroke-width="8" fill="none" stroke-linecap="round"></path>
-        <!-- Zone tints -->
-        <path d="M 6.0 65 A 49 49 0 0 1 20.4 30.4" stroke="rgba(0,255,136,.08)" stroke-width="8" fill="none" stroke-linecap="round"></path>
-        <path d="M 55.0 16.0 A 49 49 0 0 1 89.6 30.4" stroke="rgba(255,140,0,.08)" stroke-width="8" fill="none" stroke-linecap="round"></path>
-        <path d="M 89.6 30.4 A 49 49 0 0 1 104.0 65" stroke="rgba(255,51,51,.08)" stroke-width="8" fill="none" stroke-linecap="round"></path>
-        <!-- Progress arc -->
-        <path d="M 6.0 65 A 49 49 0 0 1 20.4 30.4" stroke="#333" stroke-width="8" fill="none" stroke-linecap="round"></path>
-        <!-- Glow tip -->
-        <circle cx="20.4" cy="30.4" r="5" fill="#333" opacity=".6" filter="url(#gci3ht)"></circle>
-        <!-- Tick marks -->
-        <line x1="17.0" y1="65.0" x2="4.0" y2="65.0" stroke="#333" stroke-width="1.5"></line><line x1="28.1" y1="38.1" x2="18.9" y2="28.9" stroke="#1e1e28" stroke-width="1"></line><line x1="55.0" y1="27.0" x2="55.0" y2="14.0" stroke="#333" stroke-width="1.5"></line><line x1="81.9" y1="38.1" x2="91.1" y2="28.9" stroke="#1e1e28" stroke-width="1"></line><line x1="93.0" y1="65.0" x2="106.0" y2="65.0" stroke="#333" stroke-width="1.5"></line>
-        <!-- Needle -->
-        <line x1="55" y1="65" x2="29.5" y2="39.5" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round"></line>
-        <circle cx="55" cy="65" r="4" fill="#333" opacity=".9"></circle>
-        <circle cx="55" cy="65" r="2.6666666666666665" fill="#09090e"></circle>
-        <!-- Label -->
-        
-    </svg></div>
-                    <div class="boom-sv" id="boom-val" style="color: rgb(51, 51, 51);">25%</div>
-                    <div class="boom-sl" id="boom-lbl" style="color: rgb(51, 51, 51);">WATCH</div>
-                    <div style="font-size:10px;color:#7a7a8e;margin-top:2px;" id="boom-top">Top: PNUT</div>
+                    <div style="width:110px;height:75px;" id="boom-arc"></div>
+                    <div class="boom-sv" id="boom-val" style="color:#7a7a90">--</div>
+                    <div class="boom-sl" id="boom-lbl" style="color:#7a7a90">WATCH</div>
+                    <div style="font-size:10px;color:#7a7a8e;margin-top:2px;" id="boom-top">---</div>
                 </div>
                 <div>
                     <div style="font-size:10px;color:#7a7a90;letter-spacing:1px;margin-bottom:6px;">BOOM GUIDE</div>
@@ -824,7 +634,7 @@ h1{font-family:var(--dp);color:var(--o);font-size:22px;letter-spacing:5px;font-w
                         <span style="color:#ff2266">≥90%</span> · 💥 IMMINENT
                     </div>
                     <div style="font-size:10px;color:#7a7a90;letter-spacing:1px;margin-top:8px;">LIVE FUNDING RATES</div>
-                    <div class="fund-row" id="fund-disp"><span class="fp neg">BTC -0.000%</span><span class="fp neg">ETH -0.005%</span><span class="fp neg">SOL -0.005%</span><span class="fp neg">XRP -0.013%</span><span class="fp neg">WLD -0.044%</span><span class="fp">BNB --</span><span class="fp neg">DOGE -0.004%</span><span class="fp neg">LINK -0.002%</span></div>
+                    <div class="fund-row" id="fund-disp"><span class="fp">Loading...</span></div>
                 </div>
             </div>
         </div>
@@ -833,7 +643,7 @@ h1{font-family:var(--dp);color:var(--o);font-size:22px;letter-spacing:5px;font-w
 
 <!-- ══ HEAVY PLAYERS ══ -->
 <div>
-    <div class="sh"><span class="sl heavy">🏋 Heavy Players</span><span class="sb sb-o">TOP 15 BY LIVE VOLUME · AUTO-RANKED</span><span style="margin-left:auto;font-size:11px;color:#b07840;" id="heavy-pool-info">BTC·ETH·SOL·XRP·WLD·BNB·DOGE·NEAR·ADA·SUI·LINK·PEPE·TON·AVAX·LTC</span></div>
+    <div class="sh"><span class="sl heavy">🏋 Heavy Players</span><span class="sb sb-o">TOP 15 BY LIVE VOLUME · AUTO-RANKED</span><span style="margin-left:auto;font-size:11px;color:#b07840;" id="heavy-pool-info">Detecting...</span></div>
     <div class="tier-col-labels">
         <div class="tcl" style="color:#c0a830;">3× ENTRY</div>
         <div class="tcl" style="color:#c89040;">9× RALLY ★</div>
@@ -842,223 +652,7 @@ h1{font-family:var(--dp);color:var(--o);font-size:22px;letter-spacing:5px;font-w
         <div class="tcl" style="color:#5ab088;">243× IGNITE</div>
         <div class="tcl" style="color:#8050c0;">729× LEGEND</div>
     </div>
-    <div class="tier-grid" id="heavy-grid"><div class="tier-slot ts-on" id="heavy-slot-3" data-tier="3">
-            <div class="ts-lv" data-tier="3">3×</div>
-            <div class="ts-clk" id="heavy-clk-3" style="color:var(--g)">20:29:09</div>
-            <div class="ts-coin" id="heavy-coin-3" style="color:var(--o)">TON</div>
-            <div class="ts-price" id="heavy-price-3">$1.59</div>
-            <div class="gauge-wrap" style="width:86px;height:54px;" id="heavy-gauge-3"><svg viewBox="0 0 86 54" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <filter id="ghrfes"><fegaussianblur stdDeviation="2.5" result="b"></fegaussianblur>
-            <femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
-        </defs>
-        <!-- BG arc -->
-        <path d="M 6.0 44 A 37 37 0 0 1 80.0 44" stroke="#1a1a26" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Zone tints -->
-        <path d="M 6.0 44 A 37 37 0 0 1 16.8 17.8" stroke="rgba(0,255,136,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 43.0 7.0 A 37 37 0 0 1 69.2 17.8" stroke="rgba(255,140,0,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 69.2 17.8 A 37 37 0 0 1 80.0 44" stroke="rgba(255,51,51,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Progress arc -->
-        <path d="M 6.0 44 A 37 37 0 0 1 7.8 32.6" stroke="#fcd535" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Glow tip -->
-        <circle cx="7.8" cy="32.6" r="4" fill="#fcd535" opacity=".6" filter="url(#ghrfes)"></circle>
-        <!-- Tick marks -->
-        <line x1="15.0" y1="44.0" x2="4.0" y2="44.0" stroke="#333" stroke-width="1.5"></line><line x1="23.2" y1="24.2" x2="15.4" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="43.0" y1="16.0" x2="43.0" y2="5.0" stroke="#333" stroke-width="1.5"></line><line x1="62.8" y1="24.2" x2="70.6" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="71.0" y1="44.0" x2="82.0" y2="44.0" stroke="#333" stroke-width="1.5"></line>
-        <!-- Needle -->
-        <line x1="43" y1="44" x2="18.3" y2="36.0" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round"></line>
-        <circle cx="43" cy="44" r="3" fill="#fcd535" opacity=".9"></circle>
-        <circle cx="43" cy="44" r="2" fill="#09090e"></circle>
-        <!-- Label -->
-        <text x="43" y="58" text-anchor="middle" fill="#fcd535" font-family="Orbitron,sans-serif" font-size="10" font-weight="700">10%</text>
-    </svg></div>
-            <div class="ts-ba-row"><span style="font-size:11px;color:#7a7a8e">B:A</span><span style="font-size: 12px; font-family: Orbitron, sans-serif; color: rgb(68, 68, 68);" id="heavy-ba-3">1.03</span></div>
-            <div class="ts-bar-wrap"><div class="ts-bar" id="heavy-bar-3" style="width: 20.6%; background: rgb(68, 68, 68);"></div></div>
-            <div class="rsi-mtf-row" id="heavy-pills-3"></div>
-            <div style="display:flex;align-items:center;justify-content:center;gap:4px;"><div id="heavy-siren-3" class="siren-badge"><span class="siren-icon">🚨</span></div></div>
-            <div class="ts-hits" id="heavy-hits-3"></div>
-            <div class="ts-gap ts-gap-buy" id="heavy-gap-3">
-            <div class="tg-head"><span class="tg-head-lbl" style="color:#00aaff">⏳ NO GAP YET</span></div>
-            <div class="tg-row"><span class="tg-lbl">🟢 GOOD BUY</span><span class="tg-val tg-buy-v">$1.58</span></div>
-            <div class="tg-row"><span class="tg-lbl" style="color:#00aaff">SUPPORT</span><span class="tg-cnt">1.0% below</span></div></div>
-        </div><div class="tier-slot ts-on ts-rally" id="heavy-slot-9" data-tier="9">
-            <div class="ts-lv" data-tier="9">9×</div>
-            <div class="ts-clk" id="heavy-clk-9" style="color:var(--g)">20:29:09</div>
-            <div class="ts-coin" id="heavy-coin-9" style="color:var(--o)">TON</div>
-            <div class="ts-price" id="heavy-price-9">$1.59</div>
-            <div class="gauge-wrap" style="width:86px;height:54px;" id="heavy-gauge-9"><svg viewBox="0 0 86 54" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <filter id="gc0dor"><fegaussianblur stdDeviation="2.5" result="b"></fegaussianblur>
-            <femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
-        </defs>
-        <!-- BG arc -->
-        <path d="M 6.0 44 A 37 37 0 0 1 80.0 44" stroke="#1a1a26" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Zone tints -->
-        <path d="M 6.0 44 A 37 37 0 0 1 16.8 17.8" stroke="rgba(0,255,136,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 43.0 7.0 A 37 37 0 0 1 69.2 17.8" stroke="rgba(255,140,0,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 69.2 17.8 A 37 37 0 0 1 80.0 44" stroke="rgba(255,51,51,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Progress arc -->
-        <path d="M 6.0 44 A 37 37 0 0 1 6.2 40.5" stroke="#ff8c00" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Glow tip -->
-        <circle cx="6.2" cy="40.5" r="4" fill="#ff8c00" opacity=".6" filter="url(#gc0dor)"></circle>
-        <!-- Tick marks -->
-        <line x1="15.0" y1="44.0" x2="4.0" y2="44.0" stroke="#333" stroke-width="1.5"></line><line x1="23.2" y1="24.2" x2="15.4" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="43.0" y1="16.0" x2="43.0" y2="5.0" stroke="#333" stroke-width="1.5"></line><line x1="62.8" y1="24.2" x2="70.6" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="71.0" y1="44.0" x2="82.0" y2="44.0" stroke="#333" stroke-width="1.5"></line>
-        <!-- Needle -->
-        <line x1="43" y1="44" x2="17.1" y2="41.6" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round"></line>
-        <circle cx="43" cy="44" r="3" fill="#ff8c00" opacity=".9"></circle>
-        <circle cx="43" cy="44" r="2" fill="#09090e"></circle>
-        <!-- Label -->
-        <text x="43" y="58" text-anchor="middle" fill="#ff8c00" font-family="Orbitron,sans-serif" font-size="10" font-weight="700">3%</text>
-    </svg></div>
-            <div class="ts-ba-row"><span style="font-size:11px;color:#7a7a8e">B:A</span><span style="font-size: 12px; font-family: Orbitron, sans-serif; color: rgb(68, 68, 68);" id="heavy-ba-9">1.03</span></div>
-            <div class="ts-bar-wrap"><div class="ts-bar" id="heavy-bar-9" style="width: 20.6%; background: rgb(68, 68, 68);"></div></div>
-            <div class="rsi-mtf-row" id="heavy-pills-9"></div>
-            <div style="display:flex;align-items:center;justify-content:center;gap:4px;"><div id="heavy-siren-9" class="siren-badge"><span class="siren-icon">🚨</span></div></div>
-            <div class="ts-hits" id="heavy-hits-9"><div class="ts-badge badge-rally">★ RALLY</div></div>
-            <div class="ts-gap ts-gap-buy" id="heavy-gap-9">
-            <div class="tg-head"><span class="tg-head-lbl" style="color:#00aaff">⏳ NO GAP YET</span></div>
-            <div class="tg-row"><span class="tg-lbl">🟢 GOOD BUY</span><span class="tg-val tg-buy-v">$1.58</span></div>
-            <div class="tg-row"><span class="tg-lbl" style="color:#00aaff">SUPPORT</span><span class="tg-cnt">1.0% below</span></div></div>
-        </div><div class="tier-slot ts-empty" id="heavy-slot-27" data-tier="27">
-            <div class="ts-lv" data-tier="27">27×</div>
-            <div class="ts-clk" id="heavy-clk-27" style="color:var(--g)">--:--:--</div>
-            <div class="ts-coin" id="heavy-coin-27" style="color:var(--o)">WAITING</div>
-            <div class="ts-price" id="heavy-price-27">$---</div>
-            <div class="gauge-wrap" style="width:86px;height:54px;" id="heavy-gauge-27"><svg viewBox="0 0 86 54" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <filter id="g6f7vu"><fegaussianblur stdDeviation="2.5" result="b"></fegaussianblur>
-            <femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
-        </defs>
-        <!-- BG arc -->
-        <path d="M 6.0 44 A 37 37 0 0 1 80.0 44" stroke="#1a1a26" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Zone tints -->
-        <path d="M 6.0 44 A 37 37 0 0 1 16.8 17.8" stroke="rgba(0,255,136,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 43.0 7.0 A 37 37 0 0 1 69.2 17.8" stroke="rgba(255,140,0,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 69.2 17.8 A 37 37 0 0 1 80.0 44" stroke="rgba(255,51,51,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Progress arc -->
-        
-        <!-- Glow tip -->
-        
-        <!-- Tick marks -->
-        <line x1="15.0" y1="44.0" x2="4.0" y2="44.0" stroke="#333" stroke-width="1.5"></line><line x1="23.2" y1="24.2" x2="15.4" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="43.0" y1="16.0" x2="43.0" y2="5.0" stroke="#333" stroke-width="1.5"></line><line x1="62.8" y1="24.2" x2="70.6" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="71.0" y1="44.0" x2="82.0" y2="44.0" stroke="#333" stroke-width="1.5"></line>
-        <!-- Needle -->
-        <line x1="43" y1="44" x2="17.0" y2="44.0" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round"></line>
-        <circle cx="43" cy="44" r="3" fill="#ff6600" opacity=".9"></circle>
-        <circle cx="43" cy="44" r="2" fill="#09090e"></circle>
-        <!-- Label -->
-        <text x="43" y="58" text-anchor="middle" fill="#ff6600" font-family="Orbitron,sans-serif" font-size="10" font-weight="700">0%</text>
-    </svg></div>
-            <div class="ts-ba-row"><span style="font-size:11px;color:#7a7a8e">B:A</span><span style="font-size: 12px; font-family: Orbitron, sans-serif; color: rgb(68, 68, 68);" id="heavy-ba-27">1.00</span></div>
-            <div class="ts-bar-wrap"><div class="ts-bar" id="heavy-bar-27" style="width: 0%; background: rgb(68, 68, 68);"></div></div>
-            <div class="rsi-mtf-row" id="heavy-pills-27"></div>
-            <div style="display:flex;align-items:center;justify-content:center;gap:4px;"><div id="heavy-siren-27" class="siren-badge"><span class="siren-icon">🚨</span></div></div>
-            <div class="ts-hits" id="heavy-hits-27"></div>
-            <div class="ts-gap" id="heavy-gap-27"></div>
-        </div><div class="tier-slot ts-empty" id="heavy-slot-81" data-tier="81">
-            <div class="ts-lv" data-tier="81">81×</div>
-            <div class="ts-clk" id="heavy-clk-81" style="color:var(--g)">--:--:--</div>
-            <div class="ts-coin" id="heavy-coin-81" style="color:var(--o)">WAITING</div>
-            <div class="ts-price" id="heavy-price-81">$---</div>
-            <div class="gauge-wrap" style="width:86px;height:54px;" id="heavy-gauge-81"><svg viewBox="0 0 86 54" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <filter id="guwrjd"><fegaussianblur stdDeviation="2.5" result="b"></fegaussianblur>
-            <femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
-        </defs>
-        <!-- BG arc -->
-        <path d="M 6.0 44 A 37 37 0 0 1 80.0 44" stroke="#1a1a26" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Zone tints -->
-        <path d="M 6.0 44 A 37 37 0 0 1 16.8 17.8" stroke="rgba(0,255,136,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 43.0 7.0 A 37 37 0 0 1 69.2 17.8" stroke="rgba(255,140,0,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 69.2 17.8 A 37 37 0 0 1 80.0 44" stroke="rgba(255,51,51,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Progress arc -->
-        
-        <!-- Glow tip -->
-        
-        <!-- Tick marks -->
-        <line x1="15.0" y1="44.0" x2="4.0" y2="44.0" stroke="#333" stroke-width="1.5"></line><line x1="23.2" y1="24.2" x2="15.4" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="43.0" y1="16.0" x2="43.0" y2="5.0" stroke="#333" stroke-width="1.5"></line><line x1="62.8" y1="24.2" x2="70.6" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="71.0" y1="44.0" x2="82.0" y2="44.0" stroke="#333" stroke-width="1.5"></line>
-        <!-- Needle -->
-        <line x1="43" y1="44" x2="17.0" y2="44.0" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round"></line>
-        <circle cx="43" cy="44" r="3" fill="#ff44aa" opacity=".9"></circle>
-        <circle cx="43" cy="44" r="2" fill="#09090e"></circle>
-        <!-- Label -->
-        <text x="43" y="58" text-anchor="middle" fill="#ff44aa" font-family="Orbitron,sans-serif" font-size="10" font-weight="700">0%</text>
-    </svg></div>
-            <div class="ts-ba-row"><span style="font-size:11px;color:#7a7a8e">B:A</span><span style="font-size: 12px; font-family: Orbitron, sans-serif; color: rgb(68, 68, 68);" id="heavy-ba-81">1.00</span></div>
-            <div class="ts-bar-wrap"><div class="ts-bar" id="heavy-bar-81" style="width: 0%; background: rgb(68, 68, 68);"></div></div>
-            <div class="rsi-mtf-row" id="heavy-pills-81"></div>
-            <div style="display:flex;align-items:center;justify-content:center;gap:4px;"><div id="heavy-siren-81" class="siren-badge"><span class="siren-icon">🚨</span></div></div>
-            <div class="ts-hits" id="heavy-hits-81"></div>
-            <div class="ts-gap" id="heavy-gap-81"></div>
-        </div><div class="tier-slot ts-empty" id="heavy-slot-243" data-tier="243">
-            <div class="ts-lv" data-tier="243">243×</div>
-            <div class="ts-clk" id="heavy-clk-243" style="color:var(--g)">--:--:--</div>
-            <div class="ts-coin" id="heavy-coin-243" style="color:var(--o)">WAITING</div>
-            <div class="ts-price" id="heavy-price-243">$---</div>
-            <div class="gauge-wrap" style="width:86px;height:54px;" id="heavy-gauge-243"><svg viewBox="0 0 86 54" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <filter id="gfwkoo"><fegaussianblur stdDeviation="2.5" result="b"></fegaussianblur>
-            <femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
-        </defs>
-        <!-- BG arc -->
-        <path d="M 6.0 44 A 37 37 0 0 1 80.0 44" stroke="#1a1a26" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Zone tints -->
-        <path d="M 6.0 44 A 37 37 0 0 1 16.8 17.8" stroke="rgba(0,255,136,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 43.0 7.0 A 37 37 0 0 1 69.2 17.8" stroke="rgba(255,140,0,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 69.2 17.8 A 37 37 0 0 1 80.0 44" stroke="rgba(255,51,51,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Progress arc -->
-        
-        <!-- Glow tip -->
-        
-        <!-- Tick marks -->
-        <line x1="15.0" y1="44.0" x2="4.0" y2="44.0" stroke="#333" stroke-width="1.5"></line><line x1="23.2" y1="24.2" x2="15.4" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="43.0" y1="16.0" x2="43.0" y2="5.0" stroke="#333" stroke-width="1.5"></line><line x1="62.8" y1="24.2" x2="70.6" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="71.0" y1="44.0" x2="82.0" y2="44.0" stroke="#333" stroke-width="1.5"></line>
-        <!-- Needle -->
-        <line x1="43" y1="44" x2="17.0" y2="44.0" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round"></line>
-        <circle cx="43" cy="44" r="3" fill="#00ffcc" opacity=".9"></circle>
-        <circle cx="43" cy="44" r="2" fill="#09090e"></circle>
-        <!-- Label -->
-        <text x="43" y="58" text-anchor="middle" fill="#00ffcc" font-family="Orbitron,sans-serif" font-size="10" font-weight="700">0%</text>
-    </svg></div>
-            <div class="ts-ba-row"><span style="font-size:11px;color:#7a7a8e">B:A</span><span style="font-size:12px;font-family:&#39;Orbitron&#39;,sans-serif;" id="heavy-ba-243">1.00</span></div>
-            <div class="ts-bar-wrap"><div class="ts-bar" id="heavy-bar-243" style="width: 0%; background: rgb(51, 51, 51);"></div></div>
-            <div class="rsi-mtf-row" id="heavy-pills-243"></div>
-            <div style="display:flex;align-items:center;justify-content:center;gap:4px;"><div id="heavy-siren-243" class="siren-badge"><span class="siren-icon">🚨</span></div></div>
-            <div class="ts-hits" id="heavy-hits-243"></div>
-            <div class="ts-gap" id="heavy-gap-243"></div>
-        </div><div class="tier-slot ts-empty" id="heavy-slot-729" data-tier="729">
-            <div class="ts-lv" data-tier="729">729×</div>
-            <div class="ts-clk" id="heavy-clk-729" style="color:var(--g)">--:--:--</div>
-            <div class="ts-coin" id="heavy-coin-729" style="color:var(--o)">WAITING</div>
-            <div class="ts-price" id="heavy-price-729">$---</div>
-            <div class="gauge-wrap" style="width:86px;height:54px;" id="heavy-gauge-729"><svg viewBox="0 0 86 54" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <filter id="geb0n3"><fegaussianblur stdDeviation="2.5" result="b"></fegaussianblur>
-            <femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
-        </defs>
-        <!-- BG arc -->
-        <path d="M 6.0 44 A 37 37 0 0 1 80.0 44" stroke="#1a1a26" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Zone tints -->
-        <path d="M 6.0 44 A 37 37 0 0 1 16.8 17.8" stroke="rgba(0,255,136,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 43.0 7.0 A 37 37 0 0 1 69.2 17.8" stroke="rgba(255,140,0,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 69.2 17.8 A 37 37 0 0 1 80.0 44" stroke="rgba(255,51,51,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Progress arc -->
-        
-        <!-- Glow tip -->
-        
-        <!-- Tick marks -->
-        <line x1="15.0" y1="44.0" x2="4.0" y2="44.0" stroke="#333" stroke-width="1.5"></line><line x1="23.2" y1="24.2" x2="15.4" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="43.0" y1="16.0" x2="43.0" y2="5.0" stroke="#333" stroke-width="1.5"></line><line x1="62.8" y1="24.2" x2="70.6" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="71.0" y1="44.0" x2="82.0" y2="44.0" stroke="#333" stroke-width="1.5"></line>
-        <!-- Needle -->
-        <line x1="43" y1="44" x2="17.0" y2="44.0" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round"></line>
-        <circle cx="43" cy="44" r="3" fill="#cc66ff" opacity=".9"></circle>
-        <circle cx="43" cy="44" r="2" fill="#09090e"></circle>
-        <!-- Label -->
-        <text x="43" y="58" text-anchor="middle" fill="#cc66ff" font-family="Orbitron,sans-serif" font-size="10" font-weight="700">0%</text>
-    </svg></div>
-            <div class="ts-ba-row"><span style="font-size:11px;color:#7a7a8e">B:A</span><span style="font-size:12px;font-family:&#39;Orbitron&#39;,sans-serif;" id="heavy-ba-729">1.00</span></div>
-            <div class="ts-bar-wrap"><div class="ts-bar" id="heavy-bar-729" style="width: 0%; background: rgb(51, 51, 51);"></div></div>
-            <div class="rsi-mtf-row" id="heavy-pills-729"></div>
-            <div style="display:flex;align-items:center;justify-content:center;gap:4px;"><div id="heavy-siren-729" class="siren-badge"><span class="siren-icon">🚨</span></div></div>
-            <div class="ts-hits" id="heavy-hits-729"></div>
-            <div class="ts-gap" id="heavy-gap-729"></div>
-        </div></div>
+    <div class="tier-grid" id="heavy-grid"></div>
 </div>
 
 <!-- ══ BINANCE ALPHA ══ -->
@@ -1085,31 +679,22 @@ h1{font-family:var(--dp);color:var(--o);font-size:22px;letter-spacing:5px;font-w
     <div class="regime-bar" id="regime-bar">
         <div class="rg-head">
             <span class="rg-title">🌐 GLOBAL REGIME · R_global · MACRO MULTIPLIER</span>
-            <span class="rg-val" id="rg-val" style="color: var(--r);">0.85×</span>
+            <span class="rg-val" id="rg-val">1.00×</span>
         </div>
         <div class="rg-controls">
             <button class="rg-btn" data-v="0.6" onclick="setRegime(0.6)">RISK-OFF</button>
-            <button class="rg-btn active" data-v="0.85" onclick="setRegime(0.85)">CAUTION</button>
+            <button class="rg-btn" data-v="0.85" onclick="setRegime(0.85)">CAUTION</button>
             <button class="rg-btn" data-v="1.0" onclick="setRegime(1.0)">NEUTRAL</button>
             <button class="rg-btn" data-v="1.2" onclick="setRegime(1.2)">RISK-ON</button>
             <button class="rg-btn" data-v="1.4" onclick="setRegime(1.4)">EUPHORIA</button>
-            <input class="rg-slider" id="rg-slider" type="range" min="0.5" max="1.5" step="0.05" value="1.0" oninput="setRegime(parseFloat(this.value))">
+            <input class="rg-slider" id="rg-slider" type="range" min="0.5" max="1.5" step="0.05" value="1.0" oninput="setRegime(parseFloat(this.value))"/>
         </div>
         <div class="rg-note">Set from your macro read: VIX · rates · oil · CPI/NFP. Display overlay only — adjusts the readiness %, does NOT alter the firing gate (the 60-day test stays pure).</div>
     </div>
-    <div class="scan-diag" id="radar-scan"><span class="scan-live"><span class="dot"></span>SCANNING 1</span><span class="scan-chips"><span class="scan-chip">
-            <span class="cn">PNUT</span>
-            <span class="scan-bar"><i style="width:26%;background:#6a6a80"></i></span>
-            <span class="scan-pct" style="color:#6a6a80">26%</span><span class="scan-adj" style="color:var(--r)">→22%</span>
-            <span class="scan-blk">vol 0.1×/3×</span></span></span></div>
-    <div class="sig-scoreboard" id="radar-sb"><div class="sb-cell"><div class="sb-v" style="color:var(--tx)">1</div><div class="sb-l">DETECTED</div></div>
-         <div class="sb-cell"><div class="sb-v" style="color:var(--y)">0</div><div class="sb-l">WATCHING</div></div>
-         <div class="sb-cell"><div class="sb-v" style="color:var(--b)">1</div><div class="sb-l">FILLED</div></div>
-         <div class="sb-cell"><div class="sb-v" style="color:#999">0</div><div class="sb-l">MISS</div></div>
-         <div class="sb-cell"><div class="sb-v" style="color:#b76bff">0</div><div class="sb-l">INVALID</div></div>
-         <div class="sb-cell"><div class="sb-v" style="color:var(--ig)">100%</div><div class="sb-l">FILL RATE</div></div></div>
-    <div class="lc-lead" id="radar-lead">avg lead detect→fill: 3s  (1 fills)</div>
-    <div id="radar-list"><div class="sig-empty">Radar live — see the scan bar above for how close each coin is. A coin lands here the instant a thin-wall runway + ignition is spotted, BEFORE any fill, then resolves to FILLED (→ simulation), MISS, or OUT-OF-STRATEGY. No P&amp;L is counted here.</div></div>
+    <div class="scan-diag" id="radar-scan"></div>
+    <div class="sig-scoreboard" id="radar-sb"></div>
+    <div class="lc-lead" id="radar-lead"></div>
+    <div id="radar-list"></div>
 </div>
 
 <!-- VS8 SIMULATION PANEL -->
@@ -1119,244 +704,12 @@ h1{font-family:var(--dp);color:var(--o);font-size:22px;letter-spacing:5px;font-w
         <span class="sig-panel-sub">confirmed fills only · win-rate &amp; expectancy on REALIZED closes</span>
     </div>
     <div class="lc-note">The honest 60-day scoreboard. A radar candidate only arrives here after ignition <b>persists</b> (a real entry is confirmed). Win rate and expectancy are computed on the realized close price — phantom ticks and never-filled setups can never enter this board.</div>
-    <div class="sig-scoreboard" id="sim-sb"><div class="sb-cell"><div class="sb-v" style="color:var(--tx)">1</div><div class="sb-l">POSITIONS</div></div>
-         <div class="sb-cell"><div class="sb-v" style="color:var(--b)">0</div><div class="sb-l">OPEN</div></div>
-         <div class="sb-cell"><div class="sb-v" style="color:var(--g)">0</div><div class="sb-l">WINS</div></div>
-         <div class="sb-cell"><div class="sb-v" style="color:var(--r)">1</div><div class="sb-l">LOSSES</div></div>
-         <div class="sb-cell"><div class="sb-v" style="color:var(--r)">0%</div><div class="sb-l">WIN RATE</div></div>
-         <div class="sb-cell"><div class="sb-v" style="color:var(--r)">-2.1%</div><div class="sb-l">EXPECTANCY</div></div></div>
-    <div id="sim-list"><div class="sig-card-row" style="border-left:3px solid var(--r)">
-        <div class="sig-r-head">
-            <span class="sig-r-coin">COOKIE</span>
-            <span class="sig-tag-cls">ULTRA-THIN</span>
-            <span class="sig-r-status" style="color:var(--r)">❌ LOSS</span>
-            <span class="sig-r-time">19:48:47z</span>
-        </div>
-        <div class="sig-r-plan">
-            <div class="sig-pl"><span class="sig-pl-l">FILL</span><span class="sig-pl-v">$0.00960</span></div>
-            <div class="sig-pl"><span class="sig-pl-l" style="color:var(--g)">TARGET</span><span class="sig-pl-v" style="color:var(--g)">$0.0111 (+15.63%)</span></div>
-            <div class="sig-pl"><span class="sig-pl-l" style="color:var(--r)">STOP</span><span class="sig-pl-v" style="color:var(--r)">$0.00940 (-2.08%)</span></div>
-            <div class="sig-pl"><span class="sig-pl-l">R:R</span><span class="sig-pl-v" style="color:var(--g)">7.5:1</span></div>
-        </div>
-        <div class="sig-r-foot">
-            <span>trigger: vol 4.6× · B:A 1.81</span>
-            <span style="color:var(--r)">closed -2.1% realized</span>
-        </div>
-    </div></div>
+    <div class="sig-scoreboard" id="sim-sb"></div>
+    <div id="sim-list"></div>
 </div>
 
     <div id="vs5-qbar" style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;padding:7px 10px;background:rgba(0,170,255,.03);border:1px solid rgba(0,170,255,.1);border-radius:6px;"></div>
-    <div class="tier-grid" id="alpha-grid"><div class="tier-slot ts-empty" id="alpha-slot-3" data-tier="3">
-            <div class="ts-lv" data-tier="3">3×</div>
-            <div class="ts-clk" id="alpha-clk-3" style="color:var(--b)">--:--:--</div>
-            <div class="ts-coin" id="alpha-coin-3" style="color:var(--b)">WAITING</div>
-            <div class="ts-price" id="alpha-price-3">$---</div>
-            <div class="gauge-wrap" style="width:86px;height:54px;" id="alpha-gauge-3"><svg viewBox="0 0 86 54" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <filter id="gksrbn"><fegaussianblur stdDeviation="2.5" result="b"></fegaussianblur>
-            <femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
-        </defs>
-        <!-- BG arc -->
-        <path d="M 6.0 44 A 37 37 0 0 1 80.0 44" stroke="#1a1a26" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Zone tints -->
-        <path d="M 6.0 44 A 37 37 0 0 1 16.8 17.8" stroke="rgba(0,255,136,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 43.0 7.0 A 37 37 0 0 1 69.2 17.8" stroke="rgba(255,140,0,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 69.2 17.8 A 37 37 0 0 1 80.0 44" stroke="rgba(255,51,51,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Progress arc -->
-        
-        <!-- Glow tip -->
-        
-        <!-- Tick marks -->
-        <line x1="15.0" y1="44.0" x2="4.0" y2="44.0" stroke="#333" stroke-width="1.5"></line><line x1="23.2" y1="24.2" x2="15.4" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="43.0" y1="16.0" x2="43.0" y2="5.0" stroke="#333" stroke-width="1.5"></line><line x1="62.8" y1="24.2" x2="70.6" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="71.0" y1="44.0" x2="82.0" y2="44.0" stroke="#333" stroke-width="1.5"></line>
-        <!-- Needle -->
-        <line x1="43" y1="44" x2="17.0" y2="44.0" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round"></line>
-        <circle cx="43" cy="44" r="3" fill="#fcd535" opacity=".9"></circle>
-        <circle cx="43" cy="44" r="2" fill="#09090e"></circle>
-        <!-- Label -->
-        <text x="43" y="58" text-anchor="middle" fill="#fcd535" font-family="Orbitron,sans-serif" font-size="10" font-weight="700">0%</text>
-    </svg></div>
-            <div class="ts-ba-row"><span style="font-size:11px;color:#7a7a8e">B:A</span><span style="font-size: 12px; font-family: Orbitron, sans-serif; color: rgb(68, 68, 68);" id="alpha-ba-3">1.00</span></div>
-            <div class="ts-bar-wrap"><div class="ts-bar" id="alpha-bar-3" style="width: 0%; background: rgb(68, 68, 68);"></div></div>
-            <div class="rsi-mtf-row" id="alpha-pills-3"></div>
-            <div style="display:flex;align-items:center;justify-content:center;gap:4px;"><div id="alpha-siren-3" class="siren-badge"><span class="siren-icon">🚨</span></div></div>
-            <div class="ts-hits" id="alpha-hits-3"></div>
-            <div class="ts-gap" id="alpha-gap-3"></div>
-        </div><div class="tier-slot ts-empty" id="alpha-slot-9" data-tier="9">
-            <div class="ts-lv" data-tier="9">9×</div>
-            <div class="ts-clk" id="alpha-clk-9" style="color:var(--b)">--:--:--</div>
-            <div class="ts-coin" id="alpha-coin-9" style="color:var(--b)">WAITING</div>
-            <div class="ts-price" id="alpha-price-9">$---</div>
-            <div class="gauge-wrap" style="width:86px;height:54px;" id="alpha-gauge-9"><svg viewBox="0 0 86 54" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <filter id="g3mvv2"><fegaussianblur stdDeviation="2.5" result="b"></fegaussianblur>
-            <femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
-        </defs>
-        <!-- BG arc -->
-        <path d="M 6.0 44 A 37 37 0 0 1 80.0 44" stroke="#1a1a26" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Zone tints -->
-        <path d="M 6.0 44 A 37 37 0 0 1 16.8 17.8" stroke="rgba(0,255,136,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 43.0 7.0 A 37 37 0 0 1 69.2 17.8" stroke="rgba(255,140,0,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 69.2 17.8 A 37 37 0 0 1 80.0 44" stroke="rgba(255,51,51,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Progress arc -->
-        
-        <!-- Glow tip -->
-        
-        <!-- Tick marks -->
-        <line x1="15.0" y1="44.0" x2="4.0" y2="44.0" stroke="#333" stroke-width="1.5"></line><line x1="23.2" y1="24.2" x2="15.4" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="43.0" y1="16.0" x2="43.0" y2="5.0" stroke="#333" stroke-width="1.5"></line><line x1="62.8" y1="24.2" x2="70.6" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="71.0" y1="44.0" x2="82.0" y2="44.0" stroke="#333" stroke-width="1.5"></line>
-        <!-- Needle -->
-        <line x1="43" y1="44" x2="17.0" y2="44.0" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round"></line>
-        <circle cx="43" cy="44" r="3" fill="#ff8c00" opacity=".9"></circle>
-        <circle cx="43" cy="44" r="2" fill="#09090e"></circle>
-        <!-- Label -->
-        <text x="43" y="58" text-anchor="middle" fill="#ff8c00" font-family="Orbitron,sans-serif" font-size="10" font-weight="700">0%</text>
-    </svg></div>
-            <div class="ts-ba-row"><span style="font-size:11px;color:#7a7a8e">B:A</span><span style="font-size: 12px; font-family: Orbitron, sans-serif; color: rgb(68, 68, 68);" id="alpha-ba-9">1.00</span></div>
-            <div class="ts-bar-wrap"><div class="ts-bar" id="alpha-bar-9" style="width: 0%; background: rgb(68, 68, 68);"></div></div>
-            <div class="rsi-mtf-row" id="alpha-pills-9"></div>
-            <div style="display:flex;align-items:center;justify-content:center;gap:4px;"><div id="alpha-siren-9" class="siren-badge"><span class="siren-icon">🚨</span></div></div>
-            <div class="ts-hits" id="alpha-hits-9"></div>
-            <div class="ts-gap" id="alpha-gap-9"></div>
-        </div><div class="tier-slot ts-empty" id="alpha-slot-27" data-tier="27">
-            <div class="ts-lv" data-tier="27">27×</div>
-            <div class="ts-clk" id="alpha-clk-27" style="color:var(--b)">--:--:--</div>
-            <div class="ts-coin" id="alpha-coin-27" style="color:var(--b)">WAITING</div>
-            <div class="ts-price" id="alpha-price-27">$---</div>
-            <div class="gauge-wrap" style="width:86px;height:54px;" id="alpha-gauge-27"><svg viewBox="0 0 86 54" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <filter id="gcj3o1"><fegaussianblur stdDeviation="2.5" result="b"></fegaussianblur>
-            <femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
-        </defs>
-        <!-- BG arc -->
-        <path d="M 6.0 44 A 37 37 0 0 1 80.0 44" stroke="#1a1a26" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Zone tints -->
-        <path d="M 6.0 44 A 37 37 0 0 1 16.8 17.8" stroke="rgba(0,255,136,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 43.0 7.0 A 37 37 0 0 1 69.2 17.8" stroke="rgba(255,140,0,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 69.2 17.8 A 37 37 0 0 1 80.0 44" stroke="rgba(255,51,51,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Progress arc -->
-        
-        <!-- Glow tip -->
-        
-        <!-- Tick marks -->
-        <line x1="15.0" y1="44.0" x2="4.0" y2="44.0" stroke="#333" stroke-width="1.5"></line><line x1="23.2" y1="24.2" x2="15.4" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="43.0" y1="16.0" x2="43.0" y2="5.0" stroke="#333" stroke-width="1.5"></line><line x1="62.8" y1="24.2" x2="70.6" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="71.0" y1="44.0" x2="82.0" y2="44.0" stroke="#333" stroke-width="1.5"></line>
-        <!-- Needle -->
-        <line x1="43" y1="44" x2="17.0" y2="44.0" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round"></line>
-        <circle cx="43" cy="44" r="3" fill="#ff6600" opacity=".9"></circle>
-        <circle cx="43" cy="44" r="2" fill="#09090e"></circle>
-        <!-- Label -->
-        <text x="43" y="58" text-anchor="middle" fill="#ff6600" font-family="Orbitron,sans-serif" font-size="10" font-weight="700">0%</text>
-    </svg></div>
-            <div class="ts-ba-row"><span style="font-size:11px;color:#7a7a8e">B:A</span><span style="font-size: 12px; font-family: Orbitron, sans-serif; color: rgb(68, 68, 68);" id="alpha-ba-27">1.00</span></div>
-            <div class="ts-bar-wrap"><div class="ts-bar" id="alpha-bar-27" style="width: 0%; background: rgb(68, 68, 68);"></div></div>
-            <div class="rsi-mtf-row" id="alpha-pills-27"></div>
-            <div style="display:flex;align-items:center;justify-content:center;gap:4px;"><div id="alpha-siren-27" class="siren-badge"><span class="siren-icon">🚨</span></div></div>
-            <div class="ts-hits" id="alpha-hits-27"></div>
-            <div class="ts-gap" id="alpha-gap-27"></div>
-        </div><div class="tier-slot ts-empty" id="alpha-slot-81" data-tier="81">
-            <div class="ts-lv" data-tier="81">81×</div>
-            <div class="ts-clk" id="alpha-clk-81" style="color:var(--b)">--:--:--</div>
-            <div class="ts-coin" id="alpha-coin-81" style="color:var(--b)">WAITING</div>
-            <div class="ts-price" id="alpha-price-81">$---</div>
-            <div class="gauge-wrap" style="width:86px;height:54px;" id="alpha-gauge-81"><svg viewBox="0 0 86 54" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <filter id="gpg3u0"><fegaussianblur stdDeviation="2.5" result="b"></fegaussianblur>
-            <femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
-        </defs>
-        <!-- BG arc -->
-        <path d="M 6.0 44 A 37 37 0 0 1 80.0 44" stroke="#1a1a26" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Zone tints -->
-        <path d="M 6.0 44 A 37 37 0 0 1 16.8 17.8" stroke="rgba(0,255,136,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 43.0 7.0 A 37 37 0 0 1 69.2 17.8" stroke="rgba(255,140,0,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 69.2 17.8 A 37 37 0 0 1 80.0 44" stroke="rgba(255,51,51,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Progress arc -->
-        
-        <!-- Glow tip -->
-        
-        <!-- Tick marks -->
-        <line x1="15.0" y1="44.0" x2="4.0" y2="44.0" stroke="#333" stroke-width="1.5"></line><line x1="23.2" y1="24.2" x2="15.4" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="43.0" y1="16.0" x2="43.0" y2="5.0" stroke="#333" stroke-width="1.5"></line><line x1="62.8" y1="24.2" x2="70.6" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="71.0" y1="44.0" x2="82.0" y2="44.0" stroke="#333" stroke-width="1.5"></line>
-        <!-- Needle -->
-        <line x1="43" y1="44" x2="17.0" y2="44.0" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round"></line>
-        <circle cx="43" cy="44" r="3" fill="#ff44aa" opacity=".9"></circle>
-        <circle cx="43" cy="44" r="2" fill="#09090e"></circle>
-        <!-- Label -->
-        <text x="43" y="58" text-anchor="middle" fill="#ff44aa" font-family="Orbitron,sans-serif" font-size="10" font-weight="700">0%</text>
-    </svg></div>
-            <div class="ts-ba-row"><span style="font-size:11px;color:#7a7a8e">B:A</span><span style="font-size: 12px; font-family: Orbitron, sans-serif; color: rgb(68, 68, 68);" id="alpha-ba-81">1.00</span></div>
-            <div class="ts-bar-wrap"><div class="ts-bar" id="alpha-bar-81" style="width: 0%; background: rgb(68, 68, 68);"></div></div>
-            <div class="rsi-mtf-row" id="alpha-pills-81"></div>
-            <div style="display:flex;align-items:center;justify-content:center;gap:4px;"><div id="alpha-siren-81" class="siren-badge"><span class="siren-icon">🚨</span></div></div>
-            <div class="ts-hits" id="alpha-hits-81"></div>
-            <div class="ts-gap" id="alpha-gap-81"></div>
-        </div><div class="tier-slot ts-empty" id="alpha-slot-243" data-tier="243">
-            <div class="ts-lv" data-tier="243">243×</div>
-            <div class="ts-clk" id="alpha-clk-243" style="color:var(--b)">--:--:--</div>
-            <div class="ts-coin" id="alpha-coin-243" style="color:var(--b)">WAITING</div>
-            <div class="ts-price" id="alpha-price-243">$---</div>
-            <div class="gauge-wrap" style="width:86px;height:54px;" id="alpha-gauge-243"><svg viewBox="0 0 86 54" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <filter id="g8pglo"><fegaussianblur stdDeviation="2.5" result="b"></fegaussianblur>
-            <femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
-        </defs>
-        <!-- BG arc -->
-        <path d="M 6.0 44 A 37 37 0 0 1 80.0 44" stroke="#1a1a26" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Zone tints -->
-        <path d="M 6.0 44 A 37 37 0 0 1 16.8 17.8" stroke="rgba(0,255,136,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 43.0 7.0 A 37 37 0 0 1 69.2 17.8" stroke="rgba(255,140,0,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 69.2 17.8 A 37 37 0 0 1 80.0 44" stroke="rgba(255,51,51,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Progress arc -->
-        
-        <!-- Glow tip -->
-        
-        <!-- Tick marks -->
-        <line x1="15.0" y1="44.0" x2="4.0" y2="44.0" stroke="#333" stroke-width="1.5"></line><line x1="23.2" y1="24.2" x2="15.4" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="43.0" y1="16.0" x2="43.0" y2="5.0" stroke="#333" stroke-width="1.5"></line><line x1="62.8" y1="24.2" x2="70.6" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="71.0" y1="44.0" x2="82.0" y2="44.0" stroke="#333" stroke-width="1.5"></line>
-        <!-- Needle -->
-        <line x1="43" y1="44" x2="17.0" y2="44.0" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round"></line>
-        <circle cx="43" cy="44" r="3" fill="#00ffcc" opacity=".9"></circle>
-        <circle cx="43" cy="44" r="2" fill="#09090e"></circle>
-        <!-- Label -->
-        <text x="43" y="58" text-anchor="middle" fill="#00ffcc" font-family="Orbitron,sans-serif" font-size="10" font-weight="700">0%</text>
-    </svg></div>
-            <div class="ts-ba-row"><span style="font-size:11px;color:#7a7a8e">B:A</span><span style="font-size:12px;font-family:&#39;Orbitron&#39;,sans-serif;" id="alpha-ba-243">1.00</span></div>
-            <div class="ts-bar-wrap"><div class="ts-bar" id="alpha-bar-243" style="width: 0%; background: rgb(51, 51, 51);"></div></div>
-            <div class="rsi-mtf-row" id="alpha-pills-243"></div>
-            <div style="display:flex;align-items:center;justify-content:center;gap:4px;"><div id="alpha-siren-243" class="siren-badge"><span class="siren-icon">🚨</span></div></div>
-            <div class="ts-hits" id="alpha-hits-243"></div>
-            <div class="ts-gap" id="alpha-gap-243"></div>
-        </div><div class="tier-slot ts-empty" id="alpha-slot-729" data-tier="729">
-            <div class="ts-lv" data-tier="729">729×</div>
-            <div class="ts-clk" id="alpha-clk-729" style="color:var(--b)">--:--:--</div>
-            <div class="ts-coin" id="alpha-coin-729" style="color:var(--b)">WAITING</div>
-            <div class="ts-price" id="alpha-price-729">$---</div>
-            <div class="gauge-wrap" style="width:86px;height:54px;" id="alpha-gauge-729"><svg viewBox="0 0 86 54" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <filter id="g70uhz"><fegaussianblur stdDeviation="2.5" result="b"></fegaussianblur>
-            <femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
-        </defs>
-        <!-- BG arc -->
-        <path d="M 6.0 44 A 37 37 0 0 1 80.0 44" stroke="#1a1a26" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Zone tints -->
-        <path d="M 6.0 44 A 37 37 0 0 1 16.8 17.8" stroke="rgba(0,255,136,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 43.0 7.0 A 37 37 0 0 1 69.2 17.8" stroke="rgba(255,140,0,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <path d="M 69.2 17.8 A 37 37 0 0 1 80.0 44" stroke="rgba(255,51,51,.08)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-        <!-- Progress arc -->
-        
-        <!-- Glow tip -->
-        
-        <!-- Tick marks -->
-        <line x1="15.0" y1="44.0" x2="4.0" y2="44.0" stroke="#333" stroke-width="1.5"></line><line x1="23.2" y1="24.2" x2="15.4" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="43.0" y1="16.0" x2="43.0" y2="5.0" stroke="#333" stroke-width="1.5"></line><line x1="62.8" y1="24.2" x2="70.6" y2="16.4" stroke="#1e1e28" stroke-width="1"></line><line x1="71.0" y1="44.0" x2="82.0" y2="44.0" stroke="#333" stroke-width="1.5"></line>
-        <!-- Needle -->
-        <line x1="43" y1="44" x2="17.0" y2="44.0" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round"></line>
-        <circle cx="43" cy="44" r="3" fill="#cc66ff" opacity=".9"></circle>
-        <circle cx="43" cy="44" r="2" fill="#09090e"></circle>
-        <!-- Label -->
-        <text x="43" y="58" text-anchor="middle" fill="#cc66ff" font-family="Orbitron,sans-serif" font-size="10" font-weight="700">0%</text>
-    </svg></div>
-            <div class="ts-ba-row"><span style="font-size:11px;color:#7a7a8e">B:A</span><span style="font-size:12px;font-family:&#39;Orbitron&#39;,sans-serif;" id="alpha-ba-729">1.00</span></div>
-            <div class="ts-bar-wrap"><div class="ts-bar" id="alpha-bar-729" style="width: 0%; background: rgb(51, 51, 51);"></div></div>
-            <div class="rsi-mtf-row" id="alpha-pills-729"></div>
-            <div style="display:flex;align-items:center;justify-content:center;gap:4px;"><div id="alpha-siren-729" class="siren-badge"><span class="siren-icon">🚨</span></div></div>
-            <div class="ts-hits" id="alpha-hits-729"></div>
-            <div class="ts-gap" id="alpha-gap-729"></div>
-        </div></div>
+    <div class="tier-grid" id="alpha-grid"></div>
 </div>
 
 <!-- ══ ASK/BID DEEP CALCULATOR ══ -->
@@ -1369,183 +722,7 @@ h1{font-family:var(--dp);color:var(--o);font-size:22px;letter-spacing:5px;font-w
                 <th>B:A RATIO</th><th style="width:100px">PRESSURE</th>
                 <th>SIGNAL</th><th>→X TIER</th><th>PRICE</th><th>ACTION</th>
             </tr></thead>
-            <tbody id="depth-body"><tr class="row-wm" style="cursor:pointer" onclick="openModal(&#39;pnut&#39;)">
-            <td><span class="dc" style="color:var(--b)">PNUT</span></td>
-            <td><span style="color:var(--b);font-size:11px;font-family:&#39;Orbitron&#39;,sans-serif">ALPHA</span></td>
-            <td style="color:#9a9aae">2210892.90</td>
-            <td style="color:#8a8a9e">1025112.50</td>
-            <td><span class="dr" style="color:var(--o)">2.16</span></td>
-            <td><div class="dbar-wrap"><div class="dbar" style="width:35.9%;background:var(--o)"></div></div></td>
-            <td><span class="tb">▲ BUILD</span></td>
-            <td style="color:#9a9aae;font-family:&#39;Orbitron&#39;,sans-serif;font-size:11px">→3×</td>
-            <td style="color:#9a9aae">$0.0402</td>
-            <td><button style="font-size:10px;padding:2px 7px;background:rgba(0,170,255,.08);border:1px solid rgba(0,170,255,.2);color:var(--b);border-radius:2px;cursor:pointer;font-family:var(--mono)" onclick="event.stopPropagation();openModal(&#39;pnut&#39;)">ANALYSE</button></td>
-        </tr><tr class="row-wm" style="cursor:pointer" onclick="openModal(&#39;bnb&#39;)">
-            <td><span class="dc" style="color:var(--o)">BNB</span></td>
-            <td><span style="color:var(--o);font-size:11px;font-family:&#39;Orbitron&#39;,sans-serif">HEAVY</span></td>
-            <td style="color:#9a9aae">123.39</td>
-            <td style="color:#8a8a9e">66.87</td>
-            <td><span class="dr" style="color:var(--o)">1.85</span></td>
-            <td><div class="dbar-wrap"><div class="dbar" style="width:30.8%;background:var(--o)"></div></div></td>
-            <td><span class="tb">▲ BUILD</span></td>
-            <td style="color:#9a9aae;font-family:&#39;Orbitron&#39;,sans-serif;font-size:11px">→3×</td>
-            <td style="color:#9a9aae">$574.05</td>
-            <td><button style="font-size:10px;padding:2px 7px;background:rgba(0,170,255,.08);border:1px solid rgba(0,170,255,.2);color:var(--b);border-radius:2px;cursor:pointer;font-family:var(--mono)" onclick="event.stopPropagation();openModal(&#39;bnb&#39;)">ANALYSE</button></td>
-        </tr><tr class="" style="cursor:pointer" onclick="openModal(&#39;wld&#39;)">
-            <td><span class="dc" style="color:var(--o)">WLD</span></td>
-            <td><span style="color:var(--o);font-size:11px;font-family:&#39;Orbitron&#39;,sans-serif">HEAVY</span></td>
-            <td style="color:#9a9aae">362611.00</td>
-            <td style="color:#8a8a9e">256840.20</td>
-            <td><span class="dr" style="color:#444">1.41</span></td>
-            <td><div class="dbar-wrap"><div class="dbar" style="width:23.5%;background:#444"></div></div></td>
-            <td><span class="tn">—</span></td>
-            <td style="color:#9a9aae;font-family:&#39;Orbitron&#39;,sans-serif;font-size:11px">→3×</td>
-            <td style="color:#9a9aae">$0.4125</td>
-            <td><button style="font-size:10px;padding:2px 7px;background:rgba(0,170,255,.08);border:1px solid rgba(0,170,255,.2);color:var(--b);border-radius:2px;cursor:pointer;font-family:var(--mono)" onclick="event.stopPropagation();openModal(&#39;wld&#39;)">ANALYSE</button></td>
-        </tr><tr class="" style="cursor:pointer" onclick="openModal(&#39;uni&#39;)">
-            <td><span class="dc" style="color:var(--o)">UNI</span></td>
-            <td><span style="color:var(--o);font-size:11px;font-family:&#39;Orbitron&#39;,sans-serif">HEAVY</span></td>
-            <td style="color:#9a9aae">46074.97</td>
-            <td style="color:#8a8a9e">34914.72</td>
-            <td><span class="dr" style="color:#444">1.32</span></td>
-            <td><div class="dbar-wrap"><div class="dbar" style="width:22.0%;background:#444"></div></div></td>
-            <td><span class="tn">—</span></td>
-            <td style="color:#9a9aae;font-family:&#39;Orbitron&#39;,sans-serif;font-size:11px">→3×</td>
-            <td style="color:#9a9aae">$2.42</td>
-            <td><button style="font-size:10px;padding:2px 7px;background:rgba(0,170,255,.08);border:1px solid rgba(0,170,255,.2);color:var(--b);border-radius:2px;cursor:pointer;font-family:var(--mono)" onclick="event.stopPropagation();openModal(&#39;uni&#39;)">ANALYSE</button></td>
-        </tr><tr class="" style="cursor:pointer" onclick="openModal(&#39;ada&#39;)">
-            <td><span class="dc" style="color:var(--o)">ADA</span></td>
-            <td><span style="color:var(--o);font-size:11px;font-family:&#39;Orbitron&#39;,sans-serif">HEAVY</span></td>
-            <td style="color:#9a9aae">2341842.00</td>
-            <td style="color:#8a8a9e">1882780.40</td>
-            <td><span class="dr" style="color:#444">1.24</span></td>
-            <td><div class="dbar-wrap"><div class="dbar" style="width:20.7%;background:#444"></div></div></td>
-            <td><span class="tn">—</span></td>
-            <td style="color:#9a9aae;font-family:&#39;Orbitron&#39;,sans-serif;font-size:11px">→3×</td>
-            <td style="color:#9a9aae">$0.1567</td>
-            <td><button style="font-size:10px;padding:2px 7px;background:rgba(0,170,255,.08);border:1px solid rgba(0,170,255,.2);color:var(--b);border-radius:2px;cursor:pointer;font-family:var(--mono)" onclick="event.stopPropagation();openModal(&#39;ada&#39;)">ANALYSE</button></td>
-        </tr><tr class="" style="cursor:pointer" onclick="openModal(&#39;ton&#39;)">
-            <td><span class="dc" style="color:var(--o)">TON</span></td>
-            <td><span style="color:var(--o);font-size:11px;font-family:&#39;Orbitron&#39;,sans-serif">HEAVY</span></td>
-            <td style="color:#9a9aae">155135.00</td>
-            <td style="color:#8a8a9e">150903.03</td>
-            <td><span class="dr" style="color:#444">1.03</span></td>
-            <td><div class="dbar-wrap"><div class="dbar" style="width:17.1%;background:#444"></div></div></td>
-            <td><span class="tn">—</span></td>
-            <td style="color:#9a9aae;font-family:&#39;Orbitron&#39;,sans-serif;font-size:11px">→3×</td>
-            <td style="color:#9a9aae">$1.59</td>
-            <td><button style="font-size:10px;padding:2px 7px;background:rgba(0,170,255,.08);border:1px solid rgba(0,170,255,.2);color:var(--b);border-radius:2px;cursor:pointer;font-family:var(--mono)" onclick="event.stopPropagation();openModal(&#39;ton&#39;)">ANALYSE</button></td>
-        </tr><tr class="" style="cursor:pointer" onclick="openModal(&#39;ltc&#39;)">
-            <td><span class="dc" style="color:var(--o)">LTC</span></td>
-            <td><span style="color:var(--o);font-size:11px;font-family:&#39;Orbitron&#39;,sans-serif">HEAVY</span></td>
-            <td style="color:#9a9aae">2439.86</td>
-            <td style="color:#8a8a9e">2412.64</td>
-            <td><span class="dr" style="color:#444">1.01</span></td>
-            <td><div class="dbar-wrap"><div class="dbar" style="width:16.9%;background:#444"></div></div></td>
-            <td><span class="tn">—</span></td>
-            <td style="color:#9a9aae;font-family:&#39;Orbitron&#39;,sans-serif;font-size:11px">--</td>
-            <td style="color:#9a9aae">$41.01</td>
-            <td><button style="font-size:10px;padding:2px 7px;background:rgba(0,170,255,.08);border:1px solid rgba(0,170,255,.2);color:var(--b);border-radius:2px;cursor:pointer;font-family:var(--mono)" onclick="event.stopPropagation();openModal(&#39;ltc&#39;)">ANALYSE</button></td>
-        </tr><tr class="" style="cursor:pointer" onclick="openModal(&#39;avax&#39;)">
-            <td><span class="dc" style="color:var(--o)">AVAX</span></td>
-            <td><span style="color:var(--o);font-size:11px;font-family:&#39;Orbitron&#39;,sans-serif">HEAVY</span></td>
-            <td style="color:#9a9aae">13481.17</td>
-            <td style="color:#8a8a9e">14190.78</td>
-            <td><span class="dr" style="color:#444">0.95</span></td>
-            <td><div class="dbar-wrap"><div class="dbar" style="width:15.8%;background:#444"></div></div></td>
-            <td><span class="tn">—</span></td>
-            <td style="color:#9a9aae;font-family:&#39;Orbitron&#39;,sans-serif;font-size:11px">--</td>
-            <td style="color:#9a9aae">$6.58</td>
-            <td><button style="font-size:10px;padding:2px 7px;background:rgba(0,170,255,.08);border:1px solid rgba(0,170,255,.2);color:var(--b);border-radius:2px;cursor:pointer;font-family:var(--mono)" onclick="event.stopPropagation();openModal(&#39;avax&#39;)">ANALYSE</button></td>
-        </tr><tr class="" style="cursor:pointer" onclick="openModal(&#39;doge&#39;)">
-            <td><span class="dc" style="color:var(--o)">DOGE</span></td>
-            <td><span style="color:var(--o);font-size:11px;font-family:&#39;Orbitron&#39;,sans-serif">HEAVY</span></td>
-            <td style="color:#9a9aae">6119075.00</td>
-            <td style="color:#8a8a9e">6692814.00</td>
-            <td><span class="dr" style="color:#444">0.91</span></td>
-            <td><div class="dbar-wrap"><div class="dbar" style="width:15.2%;background:#444"></div></div></td>
-            <td><span class="tn">—</span></td>
-            <td style="color:#9a9aae;font-family:&#39;Orbitron&#39;,sans-serif;font-size:11px">→3×</td>
-            <td style="color:#9a9aae">$0.0807</td>
-            <td><button style="font-size:10px;padding:2px 7px;background:rgba(0,170,255,.08);border:1px solid rgba(0,170,255,.2);color:var(--b);border-radius:2px;cursor:pointer;font-family:var(--mono)" onclick="event.stopPropagation();openModal(&#39;doge&#39;)">ANALYSE</button></td>
-        </tr><tr class="" style="cursor:pointer" onclick="openModal(&#39;xrp&#39;)">
-            <td><span class="dc" style="color:var(--o)">XRP</span></td>
-            <td><span style="color:var(--o);font-size:11px;font-family:&#39;Orbitron&#39;,sans-serif">HEAVY</span></td>
-            <td style="color:#9a9aae">377706.60</td>
-            <td style="color:#8a8a9e">473167.60</td>
-            <td><span class="dr" style="color:#444">0.80</span></td>
-            <td><div class="dbar-wrap"><div class="dbar" style="width:13.3%;background:#444"></div></div></td>
-            <td><span class="tn">—</span></td>
-            <td style="color:#9a9aae;font-family:&#39;Orbitron&#39;,sans-serif;font-size:11px">→3×</td>
-            <td style="color:#9a9aae">$1.08</td>
-            <td><button style="font-size:10px;padding:2px 7px;background:rgba(0,170,255,.08);border:1px solid rgba(0,170,255,.2);color:var(--b);border-radius:2px;cursor:pointer;font-family:var(--mono)" onclick="event.stopPropagation();openModal(&#39;xrp&#39;)">ANALYSE</button></td>
-        </tr><tr class="" style="cursor:pointer" onclick="openModal(&#39;pepe&#39;)">
-            <td><span class="dc" style="color:var(--o)">PEPE</span></td>
-            <td><span style="color:var(--o);font-size:11px;font-family:&#39;Orbitron&#39;,sans-serif">HEAVY</span></td>
-            <td style="color:#9a9aae">536829136122.00</td>
-            <td style="color:#8a8a9e">690507426621.00</td>
-            <td><span class="dr" style="color:#444">0.78</span></td>
-            <td><div class="dbar-wrap"><div class="dbar" style="width:13.0%;background:#444"></div></div></td>
-            <td><span class="tn">—</span></td>
-            <td style="color:#9a9aae;font-family:&#39;Orbitron&#39;,sans-serif;font-size:11px">→3×</td>
-            <td style="color:#9a9aae">$0.0000026</td>
-            <td><button style="font-size:10px;padding:2px 7px;background:rgba(0,170,255,.08);border:1px solid rgba(0,170,255,.2);color:var(--b);border-radius:2px;cursor:pointer;font-family:var(--mono)" onclick="event.stopPropagation();openModal(&#39;pepe&#39;)">ANALYSE</button></td>
-        </tr><tr class="" style="cursor:pointer" onclick="openModal(&#39;sui&#39;)">
-            <td><span class="dc" style="color:var(--o)">SUI</span></td>
-            <td><span style="color:var(--o);font-size:11px;font-family:&#39;Orbitron&#39;,sans-serif">HEAVY</span></td>
-            <td style="color:#9a9aae">49374.80</td>
-            <td style="color:#8a8a9e">65271.40</td>
-            <td><span class="dr" style="color:#444">0.76</span></td>
-            <td><div class="dbar-wrap"><div class="dbar" style="width:12.6%;background:#444"></div></div></td>
-            <td><span class="tn">—</span></td>
-            <td style="color:#9a9aae;font-family:&#39;Orbitron&#39;,sans-serif;font-size:11px">→3×</td>
-            <td style="color:#9a9aae">$0.7040</td>
-            <td><button style="font-size:10px;padding:2px 7px;background:rgba(0,170,255,.08);border:1px solid rgba(0,170,255,.2);color:var(--b);border-radius:2px;cursor:pointer;font-family:var(--mono)" onclick="event.stopPropagation();openModal(&#39;sui&#39;)">ANALYSE</button></td>
-        </tr><tr class="" style="cursor:pointer" onclick="openModal(&#39;sol&#39;)">
-            <td><span class="dc" style="color:var(--o)">SOL</span></td>
-            <td><span style="color:var(--o);font-size:11px;font-family:&#39;Orbitron&#39;,sans-serif">HEAVY</span></td>
-            <td style="color:#9a9aae">11679.26</td>
-            <td style="color:#8a8a9e">18056.99</td>
-            <td><span class="dr" style="color:#444">0.65</span></td>
-            <td><div class="dbar-wrap"><div class="dbar" style="width:10.8%;background:#444"></div></div></td>
-            <td><span class="tn">—</span></td>
-            <td style="color:#9a9aae;font-family:&#39;Orbitron&#39;,sans-serif;font-size:11px">→3×</td>
-            <td style="color:#9a9aae">$61.50</td>
-            <td><button style="font-size:10px;padding:2px 7px;background:rgba(0,170,255,.08);border:1px solid rgba(0,170,255,.2);color:var(--b);border-radius:2px;cursor:pointer;font-family:var(--mono)" onclick="event.stopPropagation();openModal(&#39;sol&#39;)">ANALYSE</button></td>
-        </tr><tr class="" style="cursor:pointer" onclick="openModal(&#39;link&#39;)">
-            <td><span class="dc" style="color:var(--o)">LINK</span></td>
-            <td><span style="color:var(--o);font-size:11px;font-family:&#39;Orbitron&#39;,sans-serif">HEAVY</span></td>
-            <td style="color:#9a9aae">9065.73</td>
-            <td style="color:#8a8a9e">17569.83</td>
-            <td><span class="dr" style="color:#444">0.52</span></td>
-            <td><div class="dbar-wrap"><div class="dbar" style="width:8.6%;background:#444"></div></div></td>
-            <td><span class="tn">—</span></td>
-            <td style="color:#9a9aae;font-family:&#39;Orbitron&#39;,sans-serif;font-size:11px">→3×</td>
-            <td style="color:#9a9aae">$7.30</td>
-            <td><button style="font-size:10px;padding:2px 7px;background:rgba(0,170,255,.08);border:1px solid rgba(0,170,255,.2);color:var(--b);border-radius:2px;cursor:pointer;font-family:var(--mono)" onclick="event.stopPropagation();openModal(&#39;link&#39;)">ANALYSE</button></td>
-        </tr><tr class="" style="cursor:pointer" onclick="openModal(&#39;eth&#39;)">
-            <td><span class="dc" style="color:var(--o)">ETH</span></td>
-            <td><span style="color:var(--o);font-size:11px;font-family:&#39;Orbitron&#39;,sans-serif">HEAVY</span></td>
-            <td style="color:#9a9aae">43.71</td>
-            <td style="color:#8a8a9e">100.86</td>
-            <td><span class="dr" style="color:#444">0.43</span></td>
-            <td><div class="dbar-wrap"><div class="dbar" style="width:7.2%;background:#444"></div></div></td>
-            <td><span class="tn">—</span></td>
-            <td style="color:#9a9aae;font-family:&#39;Orbitron&#39;,sans-serif;font-size:11px">→3×</td>
-            <td style="color:#9a9aae">$1552</td>
-            <td><button style="font-size:10px;padding:2px 7px;background:rgba(0,170,255,.08);border:1px solid rgba(0,170,255,.2);color:var(--b);border-radius:2px;cursor:pointer;font-family:var(--mono)" onclick="event.stopPropagation();openModal(&#39;eth&#39;)">ANALYSE</button></td>
-        </tr><tr class="" style="cursor:pointer" onclick="openModal(&#39;btc&#39;)">
-            <td><span class="dc" style="color:var(--o)">BTC</span></td>
-            <td><span style="color:var(--o);font-size:11px;font-family:&#39;Orbitron&#39;,sans-serif">HEAVY</span></td>
-            <td style="color:#9a9aae">0.08</td>
-            <td style="color:#8a8a9e">10.87</td>
-            <td><span class="dr" style="color:#444">0.01</span></td>
-            <td><div class="dbar-wrap"><div class="dbar" style="width:0.1%;background:#444"></div></div></td>
-            <td><span class="tn">—</span></td>
-            <td style="color:#9a9aae;font-family:&#39;Orbitron&#39;,sans-serif;font-size:11px">→3×</td>
-            <td style="color:#9a9aae">$60586</td>
-            <td><button style="font-size:10px;padding:2px 7px;background:rgba(0,170,255,.08);border:1px solid rgba(0,170,255,.2);color:var(--b);border-radius:2px;cursor:pointer;font-family:var(--mono)" onclick="event.stopPropagation();openModal(&#39;btc&#39;)">ANALYSE</button></td>
-        </tr></tbody>
+            <tbody id="depth-body"></tbody>
         </table>
     </div>
 </div>
@@ -1554,44 +731,9 @@ h1{font-family:var(--dp);color:var(--o);font-size:22px;letter-spacing:5px;font-w
 
 <!-- BOTTOM PANELS -->
 <div class="btm" style="padding:0 20px 14px;">
-    <div class="panel"><h2>📊 Engine Diagnostics</h2><div id="diag"><span style="color:#707088">[20:29:08z]</span> ⚠ OKX Liq [1006] retry 30s<br><span style="color:#707088">[20:28:58z]</span> 🔬 <span style="color:var(--b)">ORDI</span> $2.90 RSI:<span class="">--</span> B/A:1.58<br><span style="color:#707088">[20:28:54z]</span> 🏋 <span style="color:var(--o)">BTC</span> $60594 RSI:<span class="">50.0</span> B/A:0.39<br><span style="color:#707088">[20:28:45z]</span> 🏋 <span style="color:var(--o)">UNI</span> $2.42 RSI:<span class="">37.5</span> B/A:1.16<br><span style="color:#707088">[20:28:37z]</span> 🏋 <span style="color:var(--o)">SOL</span> $61.56 RSI:<span class="">33.3</span> B/A:0.80<br><span style="color:#707088">[20:28:37z]</span> ⚠ OKX Liq [1006] retry 30s<br><span style="color:#707088">[20:28:33z]</span> ✅ FUT-GRAS<br><span style="color:#707088">[20:28:32z]</span> ✅ FUT-ACT<br><span style="color:#707088">[20:28:31z]</span> ✅ FUT-GOAT<br><span style="color:#707088">[20:28:30z]</span> ✅ FUT-WET<br><span style="color:#707088">[20:28:29z]</span> ✅ BNB Liq<br><span style="color:#707088">[20:28:29z]</span> 🏋 <span style="color:var(--o)">LINK</span> $7.30 RSI:<span class="rl">8.3</span> B/A:0.75<br><span style="color:#707088">[20:28:28z]</span> ✅ FUT-WIF<br><span style="color:#707088">[20:28:27z]</span> ✅ FUT-MOOD<br></div></div>
-    <div class="panel"><h2>💥 Liquidations · Spark Alerts</h2><div id="liq"><span style="color:#707088">[20:28:45z]</span> 🔥<span style="color:var(--ig);font-weight:bold">IGNITE</span> ETH B:A=<strong>5.30</strong> DRAG ATTENTION<br><span style="color:#707088">[20:28:45z]</span> 🔥<span style="color:var(--ig);font-weight:bold">IGNITE</span> BTC B:A=<strong>12.31</strong> DRAG ATTENTION<br><span style="color:#707088">[20:28:35z]</span> 🔥<span style="color:var(--ig);font-weight:bold">IGNITE</span> BNB B:A=<strong>5.39</strong> DRAG ATTENTION<br><span style="color:#707088">[20:28:31z]</span> ⚡<span style="color:var(--sp);font-weight:bold">SPARK</span> BNB B:A=<strong>3.08</strong><br><span style="color:#707088">[20:28:29z]</span> 🔥<span style="color:var(--ig);font-weight:bold">IGNITE</span> ETH B:A=<strong>4.28</strong> DRAG ATTENTION<br><span style="color:#707088">[20:28:25z]</span> ⚡<span style="color:var(--sp);font-weight:bold">SPARK</span> BNB B:A=<strong>3.65</strong><br><span style="color:#707088">[20:28:23z]</span> ⚡<span style="color:var(--sp);font-weight:bold">SPARK</span> NEIRO B:A=<strong>3.37</strong><br></div></div>
-    <div class="panel"><h2>🌍 Live Global Feed</h2><div class="news-c"><div class="tradingview-widget-container" style="height: 100%; width: 100%;"><iframe scrolling="no" allowtransparency="true" frameborder="0" src="./index_files/saved_resource.html" title="timeline TradingView widget" lang="en" style="user-select: none; box-sizing: border-box; display: block; height: 100%; width: 100%;"></iframe><style>
-	.tradingview-widget-copyright {
-		font-size: 13px !important;
-		line-height: 32px !important;
-		text-align: center !important;
-		vertical-align: middle !important;
-		/* @mixin sf-pro-display-font; */
-		font-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', Roboto, Ubuntu, sans-serif !important;
-		color: #B2B5BE !important;
-	}
-
-	.tradingview-widget-copyright .blue-text {
-		color: #2962FF !important;
-	}
-
-	.tradingview-widget-copyright a {
-		text-decoration: none !important;
-		color: #B2B5BE !important;
-	}
-
-	.tradingview-widget-copyright a:visited {
-		color: #B2B5BE !important;
-	}
-
-	.tradingview-widget-copyright a:hover .blue-text {
-		color: #1E53E5 !important;
-	}
-
-	.tradingview-widget-copyright a:active .blue-text {
-		color: #1848CC !important;
-	}
-
-	.tradingview-widget-copyright a:visited .blue-text {
-		color: #2962FF !important;
-	}
-	</style></div></div></div>
+    <div class="panel"><h2>📊 Engine Diagnostics</h2><div id="diag">Initialising...</div></div>
+    <div class="panel"><h2>💥 Liquidations · Spark Alerts</h2><div id="liq">Connecting...</div></div>
+    <div class="panel"><h2>🌍 Live Global Feed</h2><div class="news-c"><div class="tradingview-widget-container" style="height:100%"><div class="tradingview-widget-container__widget" style="height:100%"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>{"feedMode":"market","market":"crypto","colorTheme":"dark","isTransparent":true,"displayMode":"regular","width":"100%","height":"100%","locale":"en"}</script></div></div></div>
 </div>
 
 <div class="foot">Mirjan Scanner V6.3 — MG Domain · 3-Sequence Dominant · 6-Tier Architecture · Heavy (Auto Top-15) + Binance Alpha (Audited·Spot+Futures·3-Platform) · Ask/Bid Squeeze Calc · Not financial advice · © 2026 Mirjan Global Analysis</div>
@@ -3129,7 +2271,9 @@ function scanCoin(coin){
     const sGap=Math.min(1, gap/GAP_MIN);
     const sRR =Math.min(1, rr/RR_MIN);
     const sRise=rising?1:0;
-    const score=Math.round((sVol*0.30 + sGap*0.30 + sBA*0.20 + sRR*0.15 + sRise*0.05)*100);
+    const sLiq=Math.min(1, LIQ_MIN_USD>0?supportDepth/LIQ_MIN_USD:0);
+    /* V3: liquidity folded into readiness so a thin-book coin can no longer show a high % — display ladder only, firing gate (allOK) unchanged */
+    const score=Math.round((sVol*0.25 + sGap*0.25 + sBA*0.20 + sRR*0.15 + sLiq*0.10 + sRise*0.05)*100);
 
     /* blocker = first failing gate (most informative) */
     let blocker='ready';
@@ -3654,6 +2798,5 @@ function buildQuickBar(){
 }
 setTimeout(buildQuickBar,1000);
 </script>
-
-
-</body></html>
+</body>
+</html>
